@@ -194,7 +194,7 @@ nav a:hover {
   }
 
   nav {
-    position: relative;
+    position: absolute;
     text-align: left;
     transition: none;
     transform: scale(1, 1);
@@ -205,12 +205,102 @@ nav a:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    width: 100%;
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+  }
+  /* -------------------- */
+  nav:after{
+    content: '';
+    clear: both;
+    display: table;
   }
 
   nav ul {
+    margin: 0;
+    padding: 0;
     display: flex;
+    float: right;
+    list-style: none;
+    position: relative;
   }
 
+  nav ul li{
+    
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  nav ul li a{
+    text-decoration: none;
+    line-height: 70px;
+    padding: 5px  25px;
+    
+  }
+
+  nav ul li a:hover{
+    
+  }
+  nav ul ul{
+      position: absolute;
+      top: 70px;
+      opacity: 0;
+      visibility: hidden;
+  }
+
+  nav ul li:hover{
+      opacity: 1;
+      visibility: visible;
+      
+      
+  }
+
+  nav ul li ul{
+      background: rgb(125, 125, 240);
+      border-radius: 10px;
+      align-items: center;
+      margin-left: -2.5rem;
+  }
+
+  
+  nav ul li ul li {
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+  }
+  nav ul li ul li a:hover{
+      background: rgb(67, 67, 248);
+      border-radius: 10px;
+      margin-left: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 20px;
+      padding-right: 20px;
+
+  }
+
+  nav ul li:hover > ul{
+      opacity: 1;
+      visibility: visible;
+      display: table-column;
+      
+  }
+  nav ul ul li{
+    position: relative;
+    margin: 0;
+    width: max-content;
+    float: none;
+    display: list-item;
+    border-radius: 5px;
+  }
+  
+  nav ul ul ul li{
+    position: relative;
+    top: -70px;
+    left: 150px;
+  }
+
+  /* ---------------------------------- */
   nav li {
     margin-right: 3rem;
     margin-bottom: 0;
@@ -226,6 +316,9 @@ nav a:hover {
     display: block;
     height: 3px;
     background: #f15925;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: inherit;
     position: absolute;
     top: -0.75em;
     left: 0;

@@ -258,9 +258,16 @@ nav a:hover {
   nav ul li ul{
       background: rgb(125, 125, 240);
       border-radius: 10px;
+      align-items: center;
+      margin-left: -2.5rem;
+    }
+    
+    
+    nav ul li ul li {
+      align-content: center;
+      text-align: center;
+      justify-content: center;
   }
-
-  
   nav ul li ul li a:hover{
       background: rgb(67, 67, 248);
       border-radius: 10px;
