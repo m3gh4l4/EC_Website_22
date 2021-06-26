@@ -31,19 +31,19 @@
             <ul>
               <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
               <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
-              <li><a href="#" style="margin-left: 2rem;">Microcontroller</a></li>
+              <li><a href="./resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a></li>
               <li><a href="#">Computer Vision & AI</a></li>
               <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
             </ul>
           </li>
           <li>
-            <a href="./blog.html">Blogs</a>
+            <a href="./blog-home.html">Blogs</a>
             <ul>
-              <li><a href="https://electronicsclubiitg.wordpress.com/category/uncategorized/" style="margin-left: 0.75rem;">Uncategorised</a></li>
-              <li><a href="https://electronicsclubiitg.wordpress.com/category/core-electronics/">Core Electronics</a></li>
-              <li><a href="https://electronicsclubiitg.wordpress.com/category/coding/" style="margin-left: 2.55rem;">Coding</a></li>
-              <li><a href="https://electronicsclubiitg.wordpress.com/category/networking/" style="margin-left: 1.35rem;">Networking</a></li>
-              <li><a href="https://electronicsclubiitg.wordpress.com/category/hacking/" style="margin-left: 2.25rem;">Hacking</a></li>
+              <li><a href="./blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
+              <li><a href="./blog-core-electronics.html">Core Electronics</a></li>
+              <li><a href="./blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
+              <li><a href="./blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
+              <li><a href="./blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
               
             </ul>
           </li>
@@ -56,42 +56,45 @@
       </label>
     </header>
     <!-- ----------------------------lildropdown----------------------------- -->
-    <section class="dropcontainer">
-      <div class="dropdown" id="dropdown">
-        <button class="click">Projects</button>
+    <!--        Not decided to keep or not
+      <section class="dropcontainer">
+        <div class="dropdown" id="dropdown">
+          <button class="click">Projects</button>
 
-        <div class="list">
-          <a href="http://www.google.com" target="_blank">
-            <button class="links">Google</button></a
-          >
+          <div class="list">
+            <a href="http://www.google.com" target="_blank">
+              <button class="links">Google</button></a
+            >
 
-          <a href="#"><button class="links">Link 2</button></a>
+            <a href="#"><button class="links">Link 2</button></a>
 
-          <a href="#"> <button class="links">Link 3</button></a>
+            <a href="#"> <button class="links">Link 3</button></a>
 
-          <a href="#"><button class="links">Link 4</button></a>
+            <a href="#"><button class="links">Link 4</button></a>
 
-          <a href="#"><button class="links">Link 5</button> </a>
+            <a href="#"><button class="links">Link 5</button> </a>
+          </div>
         </div>
-      </div>
 
-      <script>
-        let click = document.querySelector(".click");
+        <script>
+          let click = document.querySelector(".click");
 
-        let list = document.querySelector(".list");
-        click.addEventListener("click", () => {
-          list.classList.toggle("newlist");
-        });
-        window.addEventListener("mouseup", function (event) {
-          var box = document.getElementById("dropdown");
-          if (event.target != box && event.target.parentNode != box) {
-            list.classList.remove("newlist");
-          }
-        });
-      </script>
-    </section>
+          let list = document.querySelector(".list");
+          click.addEventListener("click", () => {
+            list.classList.toggle("newlist");
+          });
+          window.addEventListener("mouseup", function (event) {
+            var box = document.getElementById("dropdown");
+            if (event.target != box && event.target.parentNode != box) {
+              list.classList.remove("newlist");
+            }
+          });
+        </script>
+      </section>
+    -->
     <!-- --------------------------Blog-------------------------------------- -->
-    <section class="blogcontainer">
+    
+    <section class="blogcontainer" style="margin-top: 5rem;">
       <h1>Blog</h1>
       <br />
 
