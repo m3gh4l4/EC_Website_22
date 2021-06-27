@@ -733,39 +733,37 @@ nav a:hover {
   transition: transform calc(var(--d) * 2) var(--e);
 }
 .card:nth-child(1):before {
-  background-image: url(./blog-pics/Face-Recog.jpg);
+  background-image: url(./blog-pics/blog-home/Face-Recog.jpg);
 }
 .card:nth-child(2):before {
-  background-image: url(./blog-pics/LDR.png);
-  width: 12rem;
-  height: 18rem;
+  background-image: url(./blog-pics/blog-home/LDR.png);
 }
 .card:nth-child(3):before {
-  background-image: url(./blog-pics/Healthy-heart.png);
+  background-image: url(./blog-pics/blog-home/Healthy-heart.png);
 }
 .card:nth-child(4):before {
-  background-image: url(./blog-pics/nigahein.jpg);
+  background-image: url(./blog-pics/blog-home/nigahein.jpg);
 }
 .card:nth-child(5):before {
-  background-image: url(./blog-pics/Phone-detector.png);
+  background-image: url(./blog-pics/blog-home/Phone-detector.png);
 }
 .card:nth-child(6):before {
-  background-image: url(./blog-pics/smart-farm.png);
+  background-image: url(./blog-pics/blog-home/smart-farm.png);
 }
 .card:nth-child(7):before {
-  background-image: url(./blog-pics/wifi-jammer.png);
+  background-image: url(./blog-pics/blog-home/wifi-jammer.png);
 }
 .card:nth-child(8):before {
-  background-image: url(./blog-pics/piano.jpg);
+  background-image: url(./blog-pics/blog-home/piano.jpg);
 }
 .card:nth-child(9):before {
-  background-image: url(./blog-pics/v-motion.jpg);
+  background-image: url(./blog-pics/blog-home/v-motion.jpg);
 }
 .card:nth-child(10):before {
-  background-image: url(./blog-pics/laser.jpg);
+  background-image: url(./blog-pics/blog-home/laser.jpg);
 }
 .card:nth-child(11):before {
-  background-image: url(./blog-pics/RTL-SDR.jpg);
+  background-image: url(./blog-pics/blog-home/RTL-SDR.jpg);
 }
 /* add more blog card bkgrnd images here */
 
