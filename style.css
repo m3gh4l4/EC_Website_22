@@ -744,22 +744,22 @@ nav a:hover {
   background-image: url(./blog-pics/Healthy-heart.png);
 }
 .card:nth-child(4):before {
-  background-image: url(./blog-pics/Phone-detector.png);
+  background-image: url(./blog-pics/nigahein.jpg);
 }
 .card:nth-child(5):before {
-  background-image: url(./blog-pics/smart-farm.png);
+  background-image: url(./blog-pics/Phone-detector.png);
 }
 .card:nth-child(6):before {
-  background-image: url(./blog-pics/wifi-jammer.png);
+  background-image: url(./blog-pics/smart-farm.png);
 }
 .card:nth-child(7):before {
-  background-image: url(./blog-pics/piano.jpg);
+  background-image: url(./blog-pics/wifi-jammer.png);
 }
 .card:nth-child(8):before {
-  background-image: url(./blog-pics/v-motion.jpg);
+  background-image: url(./blog-pics/piano.jpg);
 }
 .card:nth-child(9):before {
-  background-image: url(./blog-pics/nigahein.jpg);
+  background-image: url(./blog-pics/v-motion.jpg);
 }
 .card:nth-child(10):before {
   background-image: url(./blog-pics/laser.jpg);
