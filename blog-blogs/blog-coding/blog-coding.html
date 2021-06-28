@@ -4,103 +4,158 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogs</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="style.css" />
+    <title>Electronics Club | Home</title>
+    <link rel="shortcut icon" href="favicon.ico" type="/image/x-icon" />
     <!-- aos -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+    @import url(/style.css);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    main article {
+      color: #ddd;
+      box-sizing: border-box;
+      line-height: 1.5rem;
+      padding: 5rem;
+      text-align: justify;
+    }
+    article h2 {
+      color: #f15925;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+    article p {
+      font-family: "Ubuntu", sans-serif;
+      font-size: 1.2rem;
+      font-weight: lighter;
+      color: #ddd;
+    }
+
+    article {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .youtube {
+      width: 70%;
+      max-width: 640px;
+      margin: 5rem auto;
+      margin-bottom: 10rem;
+    }
+
+    .vidwrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      height: 0;
+      overflow: hidden;
+    }
+    .vidwrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: 900px) {
+      main article {
+        /* width: 100%; */
+        padding: 3rem 3rem;
+      }
+      article h2 {
+        font-size: 1.8rem;
+      }
+      article p {
+        font-size: 1.1rem;
+      }
+      .youtube {
+        margin-bottom: 5rem;
+      }
+    }
+    @media screen and (max-width: 400px) {
+      .youtube {
+        width: 80%;
+        padding: 0;
+        margin-bottom: 3rem;
+      }
+      main article {
+        /* width: 100%; */
+        padding: 3rem 2rem;
+      }
+      article h2 {
+        font-size: 1.5rem;
+      }
+      article p {
+        font-size: 1rem;
+      }
+    }
+  </style>
   <body>
     <!-- ---------------------------menubar---------------------------------- -->
     <header>
-      <div class="logo">
-        <a href="./index.html">
-          <img src="./elecclublogo.svg" alt="Logo" />
-        </a>
-      </div>
+    <div class="logo">
+      <a href="./index.html">
+        <img src="/elecclublogo.svg" alt="Logo" />
+      </a>
+    </div>
 
-      <h1 class="logotext"><a href="./index.html"> Electronics Club</a></h1>
+    <h1 class="logotext"><a href="./index.html"> Electronics Club</a></h1>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <nav>
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li>
-            <a href="#">Resources</a>
-            <ul>
-              <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
-              <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
-              <li><a href="./resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a></li>
-              <li><a href="#">Computer Vision & AI</a></li>
-              <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="./blog-home.html">Blogs</a>
-            <ul>
-              <li><a href="./blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
-              <li><a href="./blog-core-electronics.html">Core Electronics</a></li>
-              <li><a href="/blog-blogs/blog-coding/blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
-              <li><a href="./blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
-              <li><a href="./blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
-              
-            </ul>
-          </li>
-          <li><a href="./team.html">Team</a></li>
-          <li><a href="./alumni.html">Alumni</a></li>
-        </ul>
-      </nav>
-      <label for="nav-toggle" class="nav-toggle-label">
-        <span class="navicon"></span>
-      </label>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li>
+          <a href="#">Resources</a>
+          <ul>
+            <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
+            <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
+            <li><a href="./resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a></li>
+            <li><a href="#">Computer Vision & AI</a></li>
+            <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="./blog-home.html">Blogs</a>
+          <ul>
+            <li><a href="./blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
+            <li><a href="./blog-core-electronics.html">Core Electronics</a></li>
+            <li><a href="/blog-blogs/blog-coding/blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
+            <li><a href="./blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
+            <li><a href="./blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
+            
+          </ul>
+        </li>
+        <li><a href="./team.html">Team</a></li>
+        <li><a href="./alumni.html">Alumni</a></li>
+      </ul>
+    </nav>
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span class="navicon"></span>
+    </label>
     </header>
-    <!-- ----------------------------lildropdown----------------------------- -->
-    <!--        Not decided to keep or not
-      <section class="dropcontainer">
-        <div class="dropdown" id="dropdown">
-          <button class="click">Projects</button>
 
-          <div class="list">
-            <a href="http://www.google.com" target="_blank">
-              <button class="links">Google</button></a
-            >
-
-            <a href="#"><button class="links">Link 2</button></a>
-
-            <a href="#"> <button class="links">Link 3</button></a>
-
-            <a href="#"><button class="links">Link 4</button></a>
-
-            <a href="#"><button class="links">Link 5</button> </a>
-          </div>
-        </div>
-
-        <script>
-          let click = document.querySelector(".click");
-
-          let list = document.querySelector(".list");
-          click.addEventListener("click", () => {
-            list.classList.toggle("newlist");
-          });
-          window.addEventListener("mouseup", function (event) {
-            var box = document.getElementById("dropdown");
-            if (event.target != box && event.target.parentNode != box) {
-              list.classList.remove("newlist");
-            }
-          });
-        </script>
-      </section>
-    -->
-    
+    <!--    -------------------------Extra-----------------------------      -->
     <!-- --------------------------Blog-------------------------------------- -->
     
     <section class="blogcontainer" style="margin-top: 5rem;">
-      <h1>Blog</h1>
+      <h1>Coding</h1>
       <br />
 
       <main class="page-content">
-        <div class="card">
+        <div class="card-coding">
           <div class="content">
             <h2 class="title">FACE RECOGNITION Door Lock</h2>
             <p class="copy">
@@ -111,32 +166,8 @@
             </a>
           </div>
         </div>
-
-        <div class="card">
-          <div class="content">
-            <h2 class="title">LDR Dot Matrix</h2>
-            <p class="copy">
-              In the modern world which is full of advertisement what is better than to provide the world with a cheaper and efficient way of advertisement. What is more impressive...
-            </p>
-            <a href="#">
-              <button class="btn">View</button>
-            </a>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="content">
-            <h2 class="title">You Can't Beat A Healthy Heart</h2>
-            <p class="copy">
-              PARTS OF HEART WAVE : Electrocardiography (ECG or EKG) is the method of recording the electrical activity of heart over a period of...
-            </p>
-            <a href="#">
-              <button class="btn">View</button>
-            </a>
-          </div>
-        </div>
-        
-        <div class="card">
+       
+        <div class="card-coding">
           <div class="content">
             <h2 class="title">NIGAHEIN</h2>
             <p class="copy">
@@ -147,50 +178,18 @@
             </a>
           </div>
         </div>
-        
-        <div class="card">
+       
+        <div class="card-coding">
           <div class="content">
-            <h2 class="title">PHONE DETECTOR</h2>
-            <p class="copy">
-              March 24,2019. Current working model About: The basic principle behind the cell phone detector circuit is to detect the RF signals. Illegal use of cell phones in places like exam halls...
-            </p>
-            <a href="#">
-              <button class="btn">View</button>
-            </a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="content">
-            <h2 class="title">SMART FARM- ELECTRONICS CLUB, IIT GUWAHATI</h2>
-            <p class="copy">Just think, life of a hardworking farmer can be made lot more easier and comfortable if he could control...</p>
-            <a href="./uncat_smartfarm.html">
-              <button class="btn">View</button>
-            </a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="content">
-            <h2 class="title">WiFi Jammer – Electronics Club IITG</h2>
-            <p class="copy">NODE MCU What are Jammers? A jammer is a device which can prevent the use of a particular radio frequency by bombarding it with...</p>
+            <h2 class="title">Paper Piano – Electronics Club IITG</h2>
+            <p class="copy">Ever went to a boring party and hoped you could play some melodies to lift up the mood or get that cute girl's attention...</p>
             <a href="#">
               <button class="btn">View</button>
             </a>
           </div>
         </div>
         
-        <div class="card">
-          <div class="content">
-            <h2 class="title">ELECTRONIC PIANO – Electronics Club IITG</h2>
-            <p class="copy">Have you ever experienced that when you are in off-mood, someone plays music around you and your mind gets refreshed ? And had a...</p>
-            <a href="#">
-              <button class="btn">View</button>
-            </a>
-          </div>
-        </div>
-        
-        <div class="card">
+        <div class="card-coding">
           <div class="content">
             <h2 class="title">V-Motion</h2>
             <p class="copy">
@@ -202,23 +201,23 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card-coding">
           <div class="content">
-            <h2 class="title">Laser communication System – Electronics Club IITG</h2>
+            <h2 class="title">RTL-SDR application (Weather satellite data)-Electronics Club IITG</h2>
             <p class="copy">
-              From where I sit, the future looks very bright for laser communicationsBadri Younes, NASA's deputy associate administrator ...
+              What is RTL-SDR? Ever wondered how Wi-Fi, Bluetooth, GSM(Mobile communication & Internet), GPS/..
             </p>
             <a href="#">
               <button class="btn">View</button>
             </a>
           </div>
         </div>
-
-        <div class="card">
+        
+        <div class="card-coding">
           <div class="content">
-            <h2 class="title">RTL-SDR application (Weather satellite data)-Electronics Club IITG</h2>
+            <h2 class="title">SIGN LANGUAGE CONVERTER</h2>
             <p class="copy">
-              What is RTL-SDR? Ever wondered how Wi-Fi, Bluetooth, GSM(Mobile communication & Internet), GPS, Radio, DTH, Satellites work. Well...
+              A sign language glove is an electronic device which converts the complex motions of a sign language into written or spoken...
             </p>
             <a href="#">
               <button class="btn">View</button>
@@ -228,6 +227,9 @@
 
       </main>
     </section>
+
+    <!--    -------------------------Extra-----------------------------      -->
+
     <!-- ----------------------------footer---------------------------------- -->
 
     <a name="contact"></a>
