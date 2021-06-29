@@ -735,37 +735,37 @@ nav a:hover {
   transition: transform calc(var(--d) * 2) var(--e);
 }
 .card:nth-child(1):before {
-  background-image: url(./blog-pics/blog-home/Face-Recog.jpg);
+  background-image: url(/blog-pics/blog-home/Face-Recog.jpg);
 }
 .card:nth-child(2):before {
-  background-image: url(./blog-pics/blog-home/LDR.png);
+  background-image: url(/blog-pics/blog-home/LDR.png);
 }
 .card:nth-child(3):before {
-  background-image: url(./blog-pics/blog-home/Healthy-heart.png);
+  background-image: url(/blog-pics/blog-home/Healthy-heart.png);
 }
 .card:nth-child(4):before {
-  background-image: url(./blog-pics/blog-home/nigahein.jpg);
+  background-image: url(/blog-pics/blog-home/nigahein.jpg);
 }
 .card:nth-child(5):before {
-  background-image: url(./blog-pics/blog-home/Phone-detector.png);
+  background-image: url(/blog-pics/blog-home/Phone-detector.png);
 }
 .card:nth-child(6):before {
-  background-image: url(./blog-pics/blog-home/smart-farm.png);
+  background-image: url(/blog-pics/blog-home/smart-farm.png);
 }
 .card:nth-child(7):before {
-  background-image: url(./blog-pics/blog-home/wifi-jammer.png);
+  background-image: url(/blog-pics/blog-home/wifi-jammer.png);
 }
 .card:nth-child(8):before {
-  background-image: url(./blog-pics/blog-home/piano.jpg);
+  background-image: url(/blog-pics/blog-home/piano.jpg);
 }
 .card:nth-child(9):before {
-  background-image: url(./blog-pics/blog-home/v-motion.jpg);
+  background-image: url(/blog-pics/blog-home/v-motion.jpg);
 }
 .card:nth-child(10):before {
-  background-image: url(./blog-pics/blog-home/laser.jpg);
+  background-image: url(/blog-pics/blog-home/laser.jpg);
 }
 .card:nth-child(11):before {
-  background-image: url(./blog-pics/blog-home/RTL-SDR.jpg);
+  background-image: url(/blog-pics/blog-home/RTL-SDR.jpg);
 }
 /* add more blog card bkgrnd images here */
 
@@ -833,26 +833,246 @@ nav a:hover {
   transition: transform calc(var(--d) * 2) var(--e);
 }
 .card-coding:nth-child(1):before {
-  background-image: url(./blog-pics/coding/face-recog.jpg);
+  background-image: url(/blog-pics/coding/face-recog.jpg);
 }
 .card-coding:nth-child(2):before {
-  background-image: url(./blog-pics/coding/negahein.jpg);
+  background-image: url(/blog-pics/coding/negahein.jpg);
 }
 .card-coding:nth-child(3):before {
-  background-image: url(./blog-pics/coding/paper-piano.png);
+  background-image: url(/blog-pics/coding/paper-piano.png);
 }
 .card-coding:nth-child(4):before {
-  background-image: url(./blog-pics/coding/v-motion.jpg);
+  background-image: url(/blog-pics/coding/v-motion.jpg);
 }
 .card-coding:nth-child(5):before {
-  background-image: url(./blog-pics/coding/rtl-sdr.jpg);
+  background-image: url(/blog-pics/coding/rtl-sdr.jpg);
 }
 .card-coding:nth-child(6):before {
-  background-image: url(./blog-pics/coding/sign-lang.png);
+  background-image: url(/blog-pics/coding/sign-lang.png);
 }
 /* add more blog card bkgrnd images here */
 
 /* --------------------------------------------------------------- */
+
+/* ------------------------------ blog-core ------------------------ */
+
+.card-core {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  outline: none;
+  overflow: hidden;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  color: whitesmoke;
+  background-color: whitesmoke;
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.1); */
+}
+
+.card-core:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-size: cover;
+  background-position: 0 0;
+  transition: transform calc(var(--d) * 1.5) var(--e);
+  pointer-events: none;
+}
+.card-core:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.009) 11.7%,
+    rgba(0, 0, 0, 0.034) 22.1%,
+    rgba(0, 0, 0, 0.072) 31.2%,
+    rgba(0, 0, 0, 0.123) 39.4%,
+    rgba(0, 0, 0, 0.182) 46.6%,
+    rgba(0, 0, 0, 0.249) 53.1%,
+    rgba(0, 0, 0, 0.32) 58.9%,
+    rgba(0, 0, 0, 0.394) 64.3%,
+    rgba(0, 0, 0, 0.468) 69.3%,
+    rgba(0, 0, 0, 0.54) 74.1%,
+    rgba(0, 0, 0, 0.607) 78.8%,
+    rgba(0, 0, 0, 0.668) 83.6%,
+    rgba(0, 0, 0, 0.721) 88.7%,
+    rgba(0, 0, 0, 0.762) 94.1%,
+    rgba(0, 0, 0, 0.79) 100%
+  );
+  transform: translateY(-50%);
+  transition: transform calc(var(--d) * 2) var(--e);
+}
+.card-core:nth-child(1):before {
+  background-image: url(/blog-pics/core/LDR.png);
+}
+.card-core:nth-child(2):before {
+  background-image: url(/blog-pics/core/Healthy-heart.png);
+}
+.card-core:nth-child(3):before {
+  background-image: url(/blog-pics/core/Phone-detector.png);
+}
+.card-core:nth-child(4):before {
+  background-image: url(/blog-pics/core/paper-piano.png);
+}
+.card-core:nth-child(5):before {
+  background-image: url(/blog-pics/core/4-bit.jpg);
+}
+/* add more blog card bkgrnd images here */
+
+/* --------------------------------------------------------------- */
+
+/* ------------------------------ blog-hacking ------------------------ */
+
+.card-hacking {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  outline: none;
+  overflow: hidden;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  color: whitesmoke;
+  background-color: whitesmoke;
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.1); */
+}
+
+.card-hacking:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-size: cover;
+  background-position: 0 0;
+  transition: transform calc(var(--d) * 1.5) var(--e);
+  pointer-events: none;
+}
+.card-hacking:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.009) 11.7%,
+    rgba(0, 0, 0, 0.034) 22.1%,
+    rgba(0, 0, 0, 0.072) 31.2%,
+    rgba(0, 0, 0, 0.123) 39.4%,
+    rgba(0, 0, 0, 0.182) 46.6%,
+    rgba(0, 0, 0, 0.249) 53.1%,
+    rgba(0, 0, 0, 0.32) 58.9%,
+    rgba(0, 0, 0, 0.394) 64.3%,
+    rgba(0, 0, 0, 0.468) 69.3%,
+    rgba(0, 0, 0, 0.54) 74.1%,
+    rgba(0, 0, 0, 0.607) 78.8%,
+    rgba(0, 0, 0, 0.668) 83.6%,
+    rgba(0, 0, 0, 0.721) 88.7%,
+    rgba(0, 0, 0, 0.762) 94.1%,
+    rgba(0, 0, 0, 0.79) 100%
+  );
+  transform: translateY(-50%);
+  transition: transform calc(var(--d) * 2) var(--e);
+}
+.card-hacking:nth-child(1):before {
+  background-image: url(/blog-pics/hacking/wifi-jammer.png);
+}
+/* add more blog card bkgrnd images here */
+
+/* --------------------------------------------------------------- */
+
+/* ------------------------------ blog-networking ------------------------ */
+
+.card-networking {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  outline: none;
+  overflow: hidden;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  color: whitesmoke;
+  background-color: whitesmoke;
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.1); */
+}
+
+.card-networking:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-size: cover;
+  background-position: 0 0;
+  transition: transform calc(var(--d) * 1.5) var(--e);
+  pointer-events: none;
+}
+.card-networking:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.009) 11.7%,
+    rgba(0, 0, 0, 0.034) 22.1%,
+    rgba(0, 0, 0, 0.072) 31.2%,
+    rgba(0, 0, 0, 0.123) 39.4%,
+    rgba(0, 0, 0, 0.182) 46.6%,
+    rgba(0, 0, 0, 0.249) 53.1%,
+    rgba(0, 0, 0, 0.32) 58.9%,
+    rgba(0, 0, 0, 0.394) 64.3%,
+    rgba(0, 0, 0, 0.468) 69.3%,
+    rgba(0, 0, 0, 0.54) 74.1%,
+    rgba(0, 0, 0, 0.607) 78.8%,
+    rgba(0, 0, 0, 0.668) 83.6%,
+    rgba(0, 0, 0, 0.721) 88.7%,
+    rgba(0, 0, 0, 0.762) 94.1%,
+    rgba(0, 0, 0, 0.79) 100%
+  );
+  transform: translateY(-50%);
+  transition: transform calc(var(--d) * 2) var(--e);
+}
+.card-networking:nth-child(1):before {
+  background-image: url(/blog-pics/networking/wifi-jammer.png);
+}
+.card-networking:nth-child(2):before {
+  background-image: url(/blog-pics/networking/RTL-SDR.jpg);
+}
+/* add more blog card bkgrnd images here */
+
+/* --------------------------------------------------------------- */
+
 
 .content {
   position: relative;
@@ -906,12 +1126,30 @@ nav a:hover {
   .card-coding {
     height: 350px;
   }
+  .card-core {
+    height: 350px;
+  }
+  .card-hacking {
+    height: 350px;
+  }
+  .card-networking {
+    height: 350px;
+  }
 }
 @media (max-width: 600px) {
   .card {
     height: 300px;
   }
   .card-coding {
+    height: 300px;
+  }
+  .card-core {
+    height: 300px;
+  }
+  .card-hacking {
+    height: 300px;
+  }
+  .card-networking {
     height: 300px;
   }
 }
@@ -927,6 +1165,15 @@ nav a:hover {
     transform: translateY(0);
   }
   .card-coding:after {
+    transform: translateY(0);
+  }
+  .card-core:after {
+    transform: translateY(0);
+  }
+  .card-hacking:after {
+    transform: translateY(0);
+  }
+  .card-networking:after {
     transform: translateY(0);
   }
 
@@ -999,6 +1246,102 @@ nav a:hover {
   .card-coding:focus-within:after,
   .card-coding:focus-within .content,
   .card-coding:focus-within .content > *:not(.title) {
+    transition-duration: 0s;
+  }
+  /* ---------------------------------------------------------------- */
+
+  /* ------------------------- blog-core ------------------------ */
+  .card-core:hover,
+  .card-core:focus-within {
+    align-items: center;
+  }
+  .card-core:hover:before,
+  .card-core:focus-within:before {
+    transform: translateY(-4%);
+  }
+  .card-core:hover:after,
+  .card-core:focus-within:after {
+    transform: translateY(-50%); /*Animating the overlay on hover*/
+  }
+  .card-core:hover .content,
+  .card-core:focus-within .content {
+    transform: translateY(0);
+  }
+  .card-core:hover .content > *:not(.title),
+  .card-core:focus-within .content > *:not(.title) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--d) / 8);
+  }
+
+  .card-core:focus-within:before,
+  .card-core:focus-within:after,
+  .card-core:focus-within .content,
+  .card-core:focus-within .content > *:not(.title) {
+    transition-duration: 0s;
+  }
+  /* ---------------------------------------------------------------- */
+
+  /* ------------------------- blog-hacking ------------------------ */
+  .card-hacking:hover,
+  .card-hacking:focus-within {
+    align-items: center;
+  }
+  .card-hacking:hover:before,
+  .card-hacking:focus-within:before {
+    transform: translateY(-4%);
+  }
+  .card-hacking:hover:after,
+  .card-hacking:focus-within:after {
+    transform: translateY(-50%); /*Animating the overlay on hover*/
+  }
+  .card-hacking:hover .content,
+  .card-hacking:focus-within .content {
+    transform: translateY(0);
+  }
+  .card-hacking:hover .content > *:not(.title),
+  .card-hacking:focus-within .content > *:not(.title) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--d) / 8);
+  }
+
+  .card-hacking:focus-within:before,
+  .card-hacking:focus-within:after,
+  .card-hacking:focus-within .content,
+  .card-hacking:focus-within .content > *:not(.title) {
+    transition-duration: 0s;
+  }
+  /* ---------------------------------------------------------------- */
+
+  /* ------------------------- blog-networking ------------------------ */
+  .card-networking:hover,
+  .card-networking:focus-within {
+    align-items: center;
+  }
+  .card-networking:hover:before,
+  .card-networking:focus-within:before {
+    transform: translateY(-4%);
+  }
+  .card-networking:hover:after,
+  .card-networking:focus-within:after {
+    transform: translateY(-50%); /*Animating the overlay on hover*/
+  }
+  .card-networking:hover .content,
+  .card-networking:focus-within .content {
+    transform: translateY(0);
+  }
+  .card-networking:hover .content > *:not(.title),
+  .card-networking:focus-within .content > *:not(.title) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--d) / 8);
+  }
+
+  .card-networking:focus-within:before,
+  .card-networking:focus-within:after,
+  .card-networking:focus-within .content,
+  .card-networking:focus-within .content > *:not(.title) {
     transition-duration: 0s;
   }
   /* ---------------------------------------------------------------- */
