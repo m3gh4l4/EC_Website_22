@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Coding | Nigahein</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <style>
+          @import url(/style.css);
+          @font-face {
+            font-family: msjh;
+            src: url(/fonts/msjh_0.ttf);
+            font-style: normal;
+          }
+          @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+          body {
+            color: #ddd;
+            font-family: "msjh";
+          }
+          .landing-container {
+            display: grid;
+            grid-template-columns: 3fr auto 1fr;
+    
+            position: sticky;
+            top: 0px;
+            /* border: 5px solid green; */
+            margin: 5rem auto;
+          }
+          .landing-main {
+            margin: 5px 2rem;
+    
+            color: #ddd;
+          }
+          /* main paras ubuntu font  */
+          span[class="divider"] {
+            justify-self: center;
+            display: inline-block;
+            position: sticky;
+            top: 0px;
+            width: 0;
+            height: 100vh;
+          }
+          .divider .divider-bar {
+            display: inline-block;
+            border-right: 2px solid rgb(4, 15, 67);
+            /* border-right: 2px solid rgb(28, 28, 184, 0.4); */
+            border-radius: 1px;
+            position: relative;
+            top: 20vh;
+            height: 60vh;
+          }
+          .landing-sidebar {
+            /* margin: 5rem auto; */
+            height: 100vh;
+            position: sticky;
+            top: 0px;
+            overflow-y: scroll;
+          }
+          .landing-sidebar::-webkit-scrollbar {
+            /* width: 1rem; */
+            border: none;
+            width: 0px; /*can add scroll bar for blog section but i have removed it*/
+          }
+          .landing-sidebar::-webkit-scrollbar-track {
+            /* color: tomato; */
+            /* color: #ddd; */
+            background-color: rgb(4, 15, 67, 0.7);
+    
+            /* background-color: transparent; */
+            /* box-shadow: inset 0px 0px 2px; */
+            border-radius: 5px;
+          }
+          .landing-sidebar::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #f15925;
+          }
+          .blogcontainer {
+            /* background-color: blueviolet; */
+            display: grid;
+            place-items: center;
+            text-align: center;
+            /* border: 2px dashed orange; */
+          }
+          .blogcontainer > h2 {
+            color: #f15925;
+            font-weight: 400;
+            font-size: 1.3rem;
+            width: 60%;
+            margin: 1rem;
+            /* margin-bottom: 3rem; */
+            text-align: center;
+            justify-self: center;
+          }
+          .page-content {
+            display: grid;
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            grid-template-columns: 1fr;
+          }
+          .card {
+            max-height: 300px;
+            justify-self: center;
+            max-width: 250px;
+          }
+          .copy {
+            line-height: 1.1rem;
+            font-size: 1rem;
+          }
+          .card .content {
+            font-size: 1rem;
+          }
+          @media screen and (max-width: 1000px) {
+            .card .title {
+              font-size: 1.2rem;
+              font-weight: 550;
+              line-height: 1;
+            }
+            .card .content {
+              padding: 0;
+            }
+          }
+          @media screen and (max-width: 700px) {
+            span[class="divider"],
+            .landing-sidebar {
+              display: none;
+            }
+            .landing-container {
+              grid-template-columns: 1fr;
+            }
+          }
+        </style>
+</head>
+
+<body>
+    <!-- ---------------------------menubar---------------------------------- -->
+    <header>
+        <div class="logo">
+          <a href="/index.html">
+            <img src="/elecclublogo.svg" alt="Logo" />
+          </a>
+        </div>
+  
+        <h1 class="logotext"><a href="/index.html"> Electronics Club</a></h1>
+  
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <nav>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li>
+              <a href="#">Resources</a>
+              <ul>
+                <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
+                <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
+                <li><a href="/resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a></li>
+                <li><a href="#">Computer Vision & AI</a></li>
+                <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/blog-home.html">Blogs</a>
+              <ul>
+                <li><a href="/blog-blogs/blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
+                <li><a href="/blog-blogs/blog-core-electronics.html">Core Electronics</a></li>
+                <li><a href="/blog-blogs/blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
+                <li><a href="/blog-blogs/blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
+                <li><a href="/blog-blogs/blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
+                
+              </ul>
+            </li>
+            <li><a href="/team.html">Team</a></li>
+            <li><a href="/alumni.html">Alumni</a></li>
+          </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span class="navicon"></span>
+        </label>
+    </header>
+
+    <section class="landing-container">
+        <!-- ---------------------------------main---------------------------- -->
+        <div class="landing-main">
+
+            <article style="margin: 40px;">
+                <h1>NIGAHEIN</h1>
+                <br /><br /><br />
+
+               <!-- ---------------------- This is optional ---------------------- -->
+
+               <div style="display:flex">
+                <div style="margin-right: 40px;transform:translate(0px, 60px);">
+                    Ever got ready with those big packs of popcorn and cold drinks, sat down comfortably on your
+                    sofa for a Netflix marathon or maybe, you just went to your comfy bed after a hard day’s work,
+                    but just realized you forgot to turn off the lights? What if you could control those annoying
+                    lights or maybe turn on your heater while you stay comfy in your bed with just your gaze? Thanks
+                    to the rise of IoT and advancements in Computer Vision, these ideas are no longer just
+                    fantasies. We have developed a system to control devices using just our gaze, completely based
+                    on open-source systems and your friendly neighborhood language, Python.
+                </div>
+                <div>
+                    <img src="/blog-pics/coding/negahein/niga1.jpg"
+                        style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 200px;">
+                </div>
+                </div>
+                <!-- -------------------------------------------------------------- -->
+
+                <br />
+
+                <h1>The Idea</h1><br><br>
+                <p>We first determine the user’s face landmarks(like lips, eyes, nose edges) to determine the pupil
+                    location using a webcam facing the user. Another webcam facing forward gives the user’s field of
+                    view. By mapping the pupil location we get the user’s current region of focus. We then determine the
+                    IoT device location and when it’s location and region of focus align for more than a second, we
+                    consider it as a signal to flip the switch.<br><br>
+                <ul>
+                    NB: Most of the detailed explanations are given in the comments in the code<br><br>
+
+                    So, the whole project can be divided into the following steps:<br><br>
+
+                    <li>Pupil tracking and region of focus</li>
+                    <li>Device detection and recognition</li>
+                    <li>Control signal</li>
+                </ul>
+                </p><br><br>
+            
+                <h1>Preliminaries</h1><br><br>
+                <ul>
+                    <li>Imutils – provides functions for easy image processing operations</li>
+                    <li>OpenCV and OpenCV-contrib module – probably the best computer vision library available for
+                        Python</li>
+                    <li>Numpy – package for scientific computation in Python</li>
+                    <li>Dlib – toolkit for machine learning and data analysis applications</li>
+                    <li>PySerial – library to communicate with the serial ports(here with Arduino)</li>
+                </ul><br><br>
+                Installation can be easily done using pip since all of them are available on PyPI<br><br>
+                <div class="wp-block-syntaxhighlighter-code ">
+                    <pre class="brush: bash; title: ; notranslate" title="">
+                # imutils
+                $ pip install imutils
+                # opencv
+                $ pip install opencv-python
+                # opencv-contrib
+                $ pip install opencv-contrib-python
+                # numpy
+                $ pip install numpy
+                # dlib
+                $ pip install dlib
+                # pyserial
+                $ pip install pyserial
+                    </pre>
+                </div>
+
+                <!-- -------------------------------------------------------------- -->
+                <br />
+                <!-- ---------------------- This is optional ---------------------- -->
+                 <div style="display:flex">
+                    <div>
+                        <img src="/blog-pics/coding/negahein/niga2.jpg"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; height: 300px;">
+                    </div>
+                    <div>
+                        <img src="/blog-pics/coding/negahein/niga3.jpg"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; height: 300px;">
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <h1>Step 1: Pupil Tracking and region of focus</h1><br><br>
+                We have used Python’s Dlib library to track the pupil location using a webcam(Cam1) facing the
+                user.<br><br>
+
+                <b>Method</b> – Pupil Tracking<br><br>
+                <ul>
+                    <li>We use the HOG(Histogram of Oriented Gradients) and SVM(Support Vector Machine) based face
+                        detector to detect the face (The working of the detector is beyond the scope of this blog post).
+                    </li>
+                    <li>We then use a face landmark predictor to determine face landmarks on the detected face.</li>
+                    <li>Select the landmarks corresponding to the eye and crop out the eye(36 to 41).</li>
+                    <li>Since the pupil center will be of minimum intensity, it can be determined by finding the
+                        corresponding point.</li>
+                </ul><br><br>
+                
+                <div class="wp-block-syntaxhighlighter-code ">
+                    <pre class="brush: python; title: ; notranslate" title="">
+#Face detection is performed using the following function
+detector = dlib.get_frontal_face_detector()
+detected_faces = detector(image, 1) #image in grayscale
+                    </pre>
+                </div><br><br>
+
+                <div class="wp-block-syntaxhighlighter-code ">
+                    <pre class="brush: python; title: ; notranslate" title="">
+#Landmark detection
+predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat') #path to the file
+landmarks = predictor(gray, rect) #on the grayscale image in the rectangle bounding the face
+                        </pre>
+                </div><br><br>
+
+                <div class="wpa-block-syntaxhighlighter-code ">
+                    <pre class="brush: python; title: ; notranslate" title="">
+#Landmark detection
+predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat') #path to the file
+landmarks = predictor(gray, rect) #on the grayscale image in the rectangle bounding the face
+                    </pre>
+                </div><br><br>
+
+                <b>Method</b> – Device detection<br><br>
+                <ul>
+                    <li>ArUco has several dictionaries of markers, so we selected the 6×6 markers for our use.
+                    </li>
+                    <li>On detection, it returns the corner points, ids and the rejected possible markers.</li>
+                    <li>We find the center of the detected marker, convert it to polar coordinates and use it to determine the section it is in.</li>
+                    <li>The IDs returned can be used to distinguish different devices by attaching different markers to different devices.</li>
+                </ul><br><br>
+                
+                   <!-- ---------------------- This is optional ---------------------- -->
+                <div class="wp-block-syntaxhighlighter-code ">
+                    
+                    #ArUco marker detection
+                    #Set up the dictionary for Aruco marker
+                    aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
+                    #Get the params for the dictionary
+                    params = aruco.DetectorParameters_create()
+                    #Get the corners and IDs
+                    corners, ids, rejected = aruco.detectMarkers(gray, aruco_dict,parameters = params) #take the grayscaled imaguser_cam as input
+                    #Draw the marker for visualization
+                    detected = aruco.drawDetectedMarkers(frame, corners) #frame is the RGB input from the user_cam
+                    #If at least one marker is detected
+                    if np.all(ids != None):
+                    #Find the center and draw a circle for representation
+                    marker_x = int((corners[0][0][0][0] + corners[0][0][2][0])/2)
+                    marker_y = int((corners[0][0][0][1] + corners[0][0][2][1])/2)
+                    cv2.circle(detected, (marker_x, marker_y), 5, (255,0,0), -1)
+                    #Convert to polar and find its sector
+                    marker_coor = (marker_x - int(control_shape[1]/2), marker_y - int(control_shape[0]/2)) #control_shape is the oveshape of the user_caminput
+                    marker_polar = conv2polar(marker_coor)
+                    marker_sector = sector(marker_polar[1])
+            
+                    
+                </div>
+            
+                <br><br>
+
+                <!-- ------------------------------------------------------------ -->
+
+                <h1>Step 3: Control signal</h1><br><br>
+                <p>When the region of focus and the device location fall in the same sector, we assume that the user is focusing on the device. We turn on the timer and if the user focuses for more than a second, it is considered as a signal for flipping the switch. A binary output is transmitted to the Arduino using serial and used to turn on or off a switch</p><br><br>
+                
+                <b>Method</b> – Determining and sending control signal<br><br>
+                <div class="wp-block-syntaxhighlighter-code "><pre class="brush: python; title: ; notranslate" title="">#Set up the port to communicate to
+arduino = serial.Serial('/dev/ttyACM0', 9600)
+if eye_sector == marker_sector:
+if delay == 0: delay = time.time()
+#Determine the time elapsed
+check = time.time() - delay
+print('Watching')trigger
+#If focused for more than a second
+if check &gt; 1:
+#Flip Switch
+if trigger == 0: #Off before
+trigger = 1
+print('Turning On')
+elif trigger == 1: #On before
+trigger = 0
+print('Turning Off')
+arduino.write(struct.pack('&gt;B', trigger))
+#Reset the time elapsed
+delay = 0
+#Reset the time elapsed
+else: delay = 0
+                    </pre></div>
+
+                    <div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate" title="">
+#Arduino code for control
+int input = 0;
+void setup() {
+   pinMode(13, OUTPUT);
+   Serial.begin(115200);
+   digitalWrite(13, LOW);
+}
+
+void loop() {
+   if (Serial.available() &gt; 0) {
+    input = Serial.read();
+    Serial.print("Received: ");
+    Serial.println(input);
+    if (input == 1) digitalWrite(13, HIGH);
+    else if (input == 0) digitalWrite(13, LOW);
+   }
+}
+                        </pre></div><br><br>
+
+
+                <h1>
+                    Notes
+                </h1><br><br>
+                <p>
+                    Full code provided here :<a href = "https://github.com/otoshuki/Nigahein/">https://github.com/otoshuki/Nigahein/</a> <br><br>
+
+Inspired by the Eye of Horus Project : hackster-eye_of_horus
+
+We tried out different methods for the project but many of them failed or didn’t meet our use case and hence we finally settled with the method stated above<br><br>
+
+Using haar-cascade for eye detection and then HSV or grayscale threshold methods to extract the pupil region. Then using contour detection we tried to determine pupil location. But the method was really inaccurate.
+Same problem occured for hough transform instead of contour detection
+Directly using PyGaze library. Unfortunately, we couldn’t use the library and faced some unknown issues.
+We tried to train a haar cascade to detect the lamp, but it didn’t work due to less data. Hence we used the ArUco markers for easy detection.
+                </p>
+                <br><br>
+
+                <h1>Improvements</h1><br><br>
+                <ul>
+                    <li>The current version is really clunky, a lot of parts can be 3D printed and miniaturized.</li>
+                <li>Face detection can be performed using CNNs which can detect faces even at different angles although it may run slow on  older systems.</li>
+                <li>Haar cascades can be trained to to detect the devices.</li>
+                <li>IR LEDs could be used to illuminate the eyes.</li>
+                <li>IR LEDs can be attached to the devices, glowing at particular rates to determine the object even in absence of visible  light.</li>
+                <li>Only eye tracking can also be employed without the need of face detection, which can further help in miniaturization.</li>
+
+                </ul><br><br>
+
+                <h1>Future Prospects</h1><br><br>
+                <p>With the rise of IoT devices and improvements in computer vision and computational efficiency, a lot of devices will be connected to the cloud. And with many people going for human augmentation, it such devices will be commonplace in the future. The applications of such a system could be limitless, ranging from unlocking cars and doors to controlling cars using pupil tracking. The rise of mixed reality systems will also use such systems to improve immersion.</p>>
+
+                </ul><br><br>
+
+                <h1>Team Members</h1>
+
+                <br />
+                <!-- ---------------------- This is optional ---------------------- -->
+                
+                <br />
+                <div style="display:flex">
+                    <div style="margin-right: 480px;transform:translate(0px, 60px);">
+                        <ul>
+                            <li>Aadi Gupta</li>
+                            <li>Aadarsh Khandelwal</li>
+                            <li>Shridam Mahajan</li>
+                        </ul><br>
+                        MENTOR: Guining Pertin
+                        <br />
+                    </div>
+                    <div>
+                        <img src="/blog-pics/coding/negahein/niga5.jpg"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 300px;">
+                    </div>
+                </div>
+
+
+
+
+            </article>
+        </div>
+        <span class="divider">
+            <span class="divider-bar"></span>
+        </span>
+
+        <!-- ----------------------aside------------------------ -->
+        <aside class="landing-sidebar">
+            <section class="blogcontainer">
+              <h2>Check out our other posts</h2>
+              <br />
+              <!-- background /blog-pics/uncategorized/inventory/are added using css nth child -->
+              <main class="page-content">
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">FACE RECOGNITION Door Lock</h2>
+                    <p class="copy">
+                      Are you fed up of losing your room keys? Or are you fed up of remembering which key opens which lock? To solve these problems, we present...
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">LDR Dot Matrix</h2>
+                    <p class="copy">
+                      In the modern world which is full of advertisement what is better than to provide the world with a cheaper and efficient way of advertisement. What is more impressive...
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">You Can't Beat A Healthy Heart</h2>
+                    <p class="copy">
+                      PARTS OF HEART WAVE : Electrocardiography (ECG or EKG) is the method of recording the electrical activity of heart over a period of...
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">NIGAHEIN</h2>
+                    <p class="copy">
+                      A Pupil tracking based room automation system
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">PHONE DETECTOR</h2>
+                    <p class="copy">
+                      March 24,2019. Current working model About: The basic principle behind the cell phone detector circuit is to detect the RF signals. Illegal use of cell phones in places like exam halls, confidential rooms, petrol bunks...
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">SMART FARM- ELECTRONICS CLUB, IIT GUWAHATI</h2>
+                    <p class="copy">Just think, life of a hardworking farmer can be made lot more easier and comfortable if he could control his whole farm sitting at his home. So we have come...</p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">WiFi Jammer – Electronics Club IITG</h2>
+                    <p class="copy">NODE MCU What are Jammers? A jammer is a device which can prevent the use of a particular radio frequency by bombarding it with random noise, or in other words, jamming it...</p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">ELECTRONIC PIANO – Electronics Club IITG</h2>
+                    <p class="copy">Have you ever experienced that when you are in off-mood, someone plays music around you and your mind gets refreshed ? And had a thought to play your own tunes whenever you...</p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">V-Motion</h2>
+                    <p class="copy">
+                      "Virtual music player which plays music according to the movements of hands.It is similar to playing a tune on a keyboard or a guitar where you need to strike different chords.To ease...
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">Laser communication System – Electronics Club IITG</h2>
+                    <p class="copy">
+                      From where I sit, the future looks very bright for laser communicationsBadri Younes, NASA's deputy associate administrator ...
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">RTL-SDR application (Weather satellite data)-Electronics Club IITG</h2>
+                    <p class="copy">
+                      What is RTL-SDR? Ever wondered how Wi-Fi, Bluetooth, GSM(Mobile communication & Internet), GPS, Radio, DTH, Satellites work. Well they do so by the usage of electromagnetic...
+                    </p>
+                    <button class="btn">View</button>
+                  </div>
+                </div>
+        
+        
+              </main>
+            </section>
+          </aside>
+    </section>
+
+    <!-- ----------------------------footer---------------------------------- -->
+    <section class="footer" data-aos="fade-up" data-aos-duration="500">
+        <div class="findus"><h2>Find Us</h2></div>
+        <!-- ---------------------social icons start--------------------- -->
+  
+        <div class="foot-socials-container">
+          <div class="facebook footlogo">
+            <a href="https://www.facebook.com/electronics.iitg" target="_blank">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="facebook-f"
+                class="svg-inline--fa fa-facebook-f fa-w-10"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 320 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="youtubelogo footlogo">
+            <a
+              href="https://www.youtube.com/channel/UClPWjFXGdtjKYjZvulnUViw"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="youtube"
+                class="svg-inline--fa fa-youtube fa-w-18"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="instagram footlogo">
+            <a
+              href="https://www.instagram.com/electronicsclubiitg/"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="instagram"
+                class="svg-inline--fa fa-instagram fa-w-14"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- /* ------------------------------------form start------------------------------- */ -->
+        <form
+          id="contact-form"
+          method="post"
+          action="form-handler.php"
+          target="_blank"
+        >
+          <div>
+            <h3>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="far"
+                data-icon="envelope"
+                class="svg-inline--fa fa-envelope fa-w-16"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="#ddd"
+                  d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
+                ></path>
+              </svg>
+              Contact Us
+            </h3>
+            <br />
+            <p>
+              For any doubts/queries, feel free to contact us at
+              <span>
+                <a
+                  href="mailto:electronicsclub@iitg.ac.in"
+                  style="text-decoration: none; color: #f15925"
+                >
+                  electronicsclub@iitg.ac.in</a
+                >
+              </span>
+              OR drop a message below:
+            </p>
+          </div>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="Name (required)"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email Address (required)"
+            required
+          />
+  
+          <textarea
+            name="message"
+            class="form-control"
+            placeholder="Message (required)"
+            required
+          ></textarea>
+          <button type="submit" class="form-control-submit" value="Submit">
+            Submit
+          </button>
+        </form>
+  
+        <!-- -----------------------------------footer-footer------------------ -->
+        <div class="footer-footer">
+          <div class="techboard">
+            <a
+              href="https://iitg.ac.in/stud/gymkhana/technical/index.html"
+              target="_blank"
+            >
+              <img src="/techincal board.svg" alt="Technical Board,IITG" />
+            </a>
+          </div>
+          <div class="Rahul">Developed by Rahul Agrawal</div>
+          <div class="Kritika">Designed by Kritika Gupta</div>
+          <!-- techboard and made by and therecontacts mostly iitgwebmail id -->
+        </div>
+    </section>
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            // duration: 1000,
+            // delay: 3,
+            // offset: 200,
+            // mirror: true
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>landing-blog</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <style>
+          @import url(/style.css);
+          @font-face {
+            font-family: msjh;
+            src: url(/fonts/msjh_0.ttf);
+            font-style: normal;
+          }
+          @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+          body {
+            color: #ddd;
+            font-family: "msjh";
+          }
+          .landing-container {
+            display: grid;
+            grid-template-columns: 3fr auto 1fr;
+    
+            position: sticky;
+            top: 0px;
+            /* border: 5px solid green; */
+            margin: 5rem auto;
+          }
+          .landing-main {
+            margin: 5px 2rem;
+    
+            color: #ddd;
+          }
+          /* main paras ubuntu font  */
+          span[class="divider"] {
+            justify-self: center;
+            display: inline-block;
+            position: sticky;
+            top: 0px;
+            width: 0;
+            height: 100vh;
+          }
+          .divider .divider-bar {
+            display: inline-block;
+            border-right: 2px solid rgb(4, 15, 67);
+            /* border-right: 2px solid rgb(28, 28, 184, 0.4); */
+            border-radius: 1px;
+            position: relative;
+            top: 20vh;
+            height: 60vh;
+          }
+          .landing-sidebar {
+            /* margin: 5rem auto; */
+            height: 100vh;
+            position: sticky;
+            top: 0px;
+            overflow-y: scroll;
+          }
+          .landing-sidebar::-webkit-scrollbar {
+            /* width: 1rem; */
+            border: none;
+            width: 0px; /*can add scroll bar for blog section but i have removed it*/
+          }
+          .landing-sidebar::-webkit-scrollbar-track {
+            /* color: tomato; */
+            /* color: #ddd; */
+            background-color: rgb(4, 15, 67, 0.7);
+    
+            /* background-color: transparent; */
+            /* box-shadow: inset 0px 0px 2px; */
+            border-radius: 5px;
+          }
+          .landing-sidebar::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #f15925;
+          }
+          .blogcontainer {
+            /* background-color: blueviolet; */
+            display: grid;
+            place-items: center;
+            text-align: center;
+            /* border: 2px dashed orange; */
+          }
+          .blogcontainer > h2 {
+            color: #f15925;
+            font-weight: 400;
+            font-size: 1.3rem;
+            width: 60%;
+            margin: 1rem;
+            /* margin-bottom: 3rem; */
+            text-align: center;
+            justify-self: center;
+          }
+          .page-content {
+            display: grid;
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            grid-template-columns: 1fr;
+          }
+          .card {
+            max-height: 300px;
+            justify-self: center;
+            max-width: 250px;
+          }
+          .copy {
+            line-height: 1.1rem;
+            font-size: 1rem;
+          }
+          .card .content {
+            font-size: 1rem;
+          }
+          @media screen and (max-width: 1000px) {
+            .card .title {
+              font-size: 1.2rem;
+              font-weight: 550;
+              line-height: 1;
+            }
+            .card .content {
+              padding: 0;
+            }
+          }
+          @media screen and (max-width: 700px) {
+            span[class="divider"],
+            .landing-sidebar {
+              display: none;
+            }
+            .landing-container {
+              grid-template-columns: 1fr;
+            }
+          }
+        </style>
+</head>
+
+<body>
+    <!-- ---------------------------menubar---------------------------------- -->
+    <header>
+        <div class="logo">
+          <a href="/index.html">
+            <img src="/elecclublogo.svg" alt="Logo" />
+          </a>
+        </div>
+  
+        <h1 class="logotext"><a href="/index.html"> Electronics Club</a></h1>
+  
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <nav>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li>
+              <a href="#">Resources</a>
+              <ul>
+                <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
+                <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
+                <li><a href="/resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a></li>
+                <li><a href="#">Computer Vision & AI</a></li>
+                <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/blog-home.html">Blogs</a>
+              <ul>
+                <li><a href="/blog-blogs/blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
+                <li><a href="/blog-blogs/blog-core-electronics.html">Core Electronics</a></li>
+                <li><a href="/blog-blogs/blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
+                <li><a href="/blog-blogs/blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
+                <li><a href="/blog-blogs/blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
+                
+              </ul>
+            </li>
+            <li><a href="/team.html">Team</a></li>
+            <li><a href="/alumni.html">Alumni</a></li>
+          </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span class="navicon"></span>
+        </label>
+    </header>
+
+    <section class="landing-container">
+        <!-- ---------------------------------main---------------------------- -->
+        <div class="landing-main">
+            <article style="margin: 40px">
+                <h1>Paper Piano – Electronics Club IITG</h1>
+                <br /><br /><br />
+
+                <!-- ---------------------- This is optional ---------------------- -->
+
+                <div style="display: flex">
+                    <div style="margin-right: 40px; transform: translate(0px, 70px)">
+                        Ever went to a boring party and hoped you could play some melodies
+                        to lift up the mood or get that cute girl’s attention by showing
+                        off your musical genius? Fret not, build the “Paper Piano”, roll
+                        it out on any occasion and make everyone dance to your music.<br /><br /><br /><br />Some
+                        great masters have developed the Arduino board to help us with our
+                        quest. This board will be the heart of the project, so building
+                        the project without it would be a harsh journey. We will be using
+                        Arduino UNO for this project but any board with at least 9 digital
+                        pins is good to go.<br /><br /><br />Paper clips can be used to
+                        connect the Arduino pins to the paper piano you designed. Turn on
+                        the system, check the serial monitor for the input values and then
+                        set the threshold accordingly.
+                    </div>
+                    <div>
+                        <img src="images/paper1.png" style="
+                  margin-top: 40px;
+                  border-radius: 6px;
+                  margin-bottom: 40px;
+                  width: 300px;
+                " />
+                    </div>
+                </div>
+                <!-- -------------------------------------------------------------- -->
+                <br />
+
+                
+
+                <h1 style = "margin-top: 30px;">The Treasure Chest (Hardware required)</h1>
+                <br />
+                <ul>
+                    <li>5W Speaker</li>
+                    <li>Breadboard</li>
+                    <li>1 M ohm resistors x 8</li>
+                    <li>A4 Sheet(Of course!)</li>
+                    <li>Pencil(Any type would work)</li>
+                </ul>
+                <br /><br />
+
+                <h1>The Holy Grail (Arduino Board)</h1>
+                <br /><br />
+                <p>
+                    Some great masters have developed the Arduino board to help us with
+                    our quest. This board will be the heart of the project, so building
+                    the project without it would be a harsh journey. We will be using
+                    Arduino UNO for this project but any board with at least 9 digital
+                    pins is good to go.
+                </p>
+
+                <h1>The Roadmap (Schematics)</h1>
+                <br /><br />
+                <img src="images/paper1.png" />
+
+                <h1 style="margin-top: 40px">Your Quest (Hardware build)</h1>
+                <br /><br />
+                <ul>
+                    <li>Make your own version of the piano on an A4 sheet.</li>
+                    <li>Make your own version of the piano on an A4 sheet.</li>
+                    <li>
+                        Pin 2 of Arduino is common to all the resistors(Will be explained
+                        later).
+                    </li>
+                    <li>
+                        The other end is connected to the keys on the paper piano and to
+                        the pins 3 – 10.
+                    </li>
+                    <li>Connect the 5W speaker to complete the circuit.</li>
+                </ul>
+                <br /><br />
+
+                <h1>The Holy Book (External library)</h1>
+                <br /><br />
+                <p>
+                    Another great master wrote the “Capacitive Sensing Library” to make
+                    our journey easier. Download the Zip file from the site. On your
+                    Arduino IDE select Sketch>Include Library>Add .ZIP Library>Select
+                    the file you just downloaded and you’re good to go
+                </p>
+                <br />
+                <br />
+
+                <h1>The Mythical Texts (Coding Time)</h1>
+                <br /><br />
+                <!-- <pre class="wp-block-code"> -->
+                <code>//Electronics Club IITG
+
+            // Import the CapacitiveSensor Library.
+            #include &lt;CapacitiveSensor.h&gt;
+             
+            #define speaker 11
+            
+            // Set the Send Pin &amp; Receive Pin.
+            CapacitiveSensor   cs_2_3 = CapacitiveSensor(2,3);        
+            CapacitiveSensor   cs_2_4 = CapacitiveSensor(2,4);         
+            CapacitiveSensor   cs_2_5 = CapacitiveSensor(2,5);     
+            CapacitiveSensor   cs_2_6 = CapacitiveSensor(2,6);     
+            CapacitiveSensor   cs_2_7 = CapacitiveSensor(2,7);      
+            CapacitiveSensor   cs_2_8 = CapacitiveSensor(2,8);         
+            CapacitiveSensor   cs_2_9 = CapacitiveSensor(2,9);  
+            CapacitiveSensor   cs_2_10 = CapacitiveSensor(2,10);  
+            
+            void setup() 
+            {
+              cs_2_6.set_CS_AutocaL_Millis(0xFFFFFFFF);     // turn off re calibration
+              // Start serial
+              Serial.begin(9600);
+            }
+            
+            
+            void loop() {
+               // Set a timer.
+              long start = millis();
+              
+              // Set the sensitivity of the sensors.
+              long key1 =  cs_2_3.capacitiveSensor(3000);
+              long key2 =  cs_2_4.capacitiveSensor(3000);
+              long key3 =  cs_2_5.capacitiveSensor(3000);
+              long key4 =  cs_2_6.capacitiveSensor(3000);
+              long key5 =  cs_2_7.capacitiveSensor(3000);
+              long key6 =  cs_2_8.capacitiveSensor(3000);
+              long key7 =  cs_2_9.capacitiveSensor(3000);
+              long key8 =  cs_2_10.capacitiveSensor(3000);
+              int thres = 5000;
+            
+              Serial.print(millis() - start);        // check on performance in milliseconds
+              Serial.print("\t");                    // tab character for debug windown spacing
+              // Print outputs
+              Serial.print(key1);                  
+              Serial.print("\t");                   
+              Serial.print(key2);   
+              Serial.print("\t");                  
+              Serial.print(key3);            
+              Serial.print("\t");                   
+              Serial.print(key4);                
+              Serial.print("\t");                    
+              Serial.print(key5);            
+              Serial.print("\t");                
+              Serial.print(key6);
+              Serial.print("\t");                  
+              Serial.print(key7);                                                    
+              Serial.print("\t");
+              Serial.println(key8);            
+              
+              // Produce tone on touching the capacitive sensor
+              // Set the threshold for each key
+              // visit https://www.arduino.cc/en/Tutorial/toneMelody for frequency settings
+              if (key1 &gt; thres) tone(speaker,131);   
+              if (key2 &gt; thres) tone(speaker,147);   
+              if (key3 &gt; thres) tone(speaker,165);
+              if (key4 &gt; thres) tone(speaker,175);
+              if (key5 &gt; thres) tone(speaker,196);
+              if (key6 &gt; thres) tone(speaker,220);
+              if (key7 &gt; thres) tone(speaker,247);
+              if (key8 &gt; thres) tone(speaker,262);
+              
+              // When none of them is touched no tone is produced.
+              if (key1&lt;=thres  &amp;  key2&lt;=thres  &amp;  key3&lt;=thres &amp; key4&lt;=thres  &amp;  key5&lt;=thres &amp;  key6&lt;=thres &amp;  key7&lt;=thres &amp;  key8&lt;=thres)
+                noTone(speaker);
+              delay(10); // arbitrary delay to limit data to serial port 
+                                           
+            }
+                </code>
+                <!-- </pre> -->
+                <br /><br /><center>
+                <iframe width="600" height="450"
+                src="https://www.youtube.com/embed/yHFyCF4n_CY">
+                </iframe></center>
+
+                <h1 style = "margin-top: 70px;">The Final Key (Tuning)</h1>
+                <br /><br />
+                <p>
+                    Paper clips can be used to connect the Arduino pins to the paper
+                    piano you designed. Turn on the system, check the serial monitor for
+                    the input values and then set the threshold accordingly.<br /><br />
+
+                    That should do it! Your very own Piano you built and designed by
+                    your own hands! But wait….
+                </p>
+                <br /><br />
+
+                <h1>The Journey isn’t over…</h1>
+                <br /><br />
+                <p>
+                    This was just the end of the beginning. A lot of improvements can be done on the project –<br><br>
+                <ul>
+                    <li>Solder the parts onto a small PCB.</li>
+                    <li>Use a smaller board or go the hard way with just the ICs to further miniaturize the system.</li>
+                    <li>Build a “Plastic Piano” so that you can roll it and carry it anywhere you like.</li>
+                    <li> Add higher and lower tones to make the sounds more appealing.</li>
+                    <li>Use conductive ink instead of the good old graphite.</li>
+                </ul>
+                </p>
+                <br /><br />
+
+
+                <h1>The Final Showdown</h1>
+                <br /><br />
+                <p>
+                    Given that you followed all the steps and improvised the system, you can now roll out your piano anywhere and get everyone in awe of your melodies.
+                </p>
+                <br /><br />
+
+                <h1>The Jedi Knights (Team members)</h1>
+
+                <br />
+                <!-- ---------------------- This is optional ---------------------- -->
+                <ul>
+                    <li>Aadi Gupta</li>
+                    <li>Harsh Motwani</li>
+                    <li>Nayan Tiwari</li>
+                    <li>Shridam Mahajan</li>
+                    <li>Utkarsh Gupta</li>
+                </ul>
+                <br />
+                The Jedi Master AKA Mentor – Guining Pertin
+                <br />
+                <br />
+
+                <!-- ------------------------------------------------------------ -->
+            </article>
+        </div>
+        <span class="divider">
+            <span class="divider-bar"></span>
+        </span>
+
+        <!-- ----------------------aside------------------------ -->
+        <aside class="landing-sidebar">
+            <section class="blogcontainer">
+              <h2>Check out our other posts</h2>
+              <br />
+              <!-- background images are added using css nth child -->
+              <main class="page-content">
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">FACE RECOGNITION Door Lock</h2>
+                    <p class="copy">
+                      Are you fed up of losing your room keys? Or are you fed up of remembering which key opens which lock? To solve these problems, we present...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">LDR Dot Matrix</h2>
+                    <p class="copy">
+                      In the modern world which is full of advertisement what is better than to provide the world with a cheaper and efficient way of advertisement. What is more impressive...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">You Can't Beat A Healthy Heart</h2>
+                    <p class="copy">
+                      PARTS OF HEART WAVE : Electrocardiography (ECG or EKG) is the method of recording the electrical activity of heart over a period of...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">NIGAHEIN</h2>
+                    <p class="copy">
+                      A Pupil tracking based room automation system
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">PHONE DETECTOR</h2>
+                    <p class="copy">
+                      March 24,2019. Current working model About: The basic principle behind the cell phone detector circuit is to detect the RF signals. Illegal use of cell phones in places like exam halls, confidential rooms, petrol bunks...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">SMART FARM- ELECTRONICS CLUB, IIT GUWAHATI</h2>
+                    <p class="copy">Just think, life of a hardworking farmer can be made lot more easier and comfortable if he could control his whole farm sitting at his home. So we have come...</p>
+                    <a href="/blog-blogs/sidebar/uncat-smartfarm.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">WiFi Jammer – Electronics Club IITG</h2>
+                    <p class="copy">NODE MCU What are Jammers? A jammer is a device which can prevent the use of a particular radio frequency by bombarding it with random noise, or in other words, jamming it...</p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">ELECTRONIC PIANO – Electronics Club IITG</h2>
+                    <p class="copy">Have you ever experienced that when you are in off-mood, someone plays music around you and your mind gets refreshed ? And had a thought to play your own tunes whenever you...</p>
+                    <a href="/blog-blogs/sidebar/uncat-piano.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">V-Motion</h2>
+                    <p class="copy">
+                      "Virtual music player which plays music according to the movements of hands.It is similar to playing a tune on a keyboard or a guitar where you need to strike different chords.To ease...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">Laser communication System – Electronics Club IITG</h2>
+                    <p class="copy">
+                      From where I sit, the future looks very bright for laser communicationsBadri Younes, NASA's deputy associate administrator ...
+                    </p>
+                    <a href="/blog-blogs/sidebar/uncat-laser.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">RTL-SDR application (Weather satellite data)-Electronics Club IITG</h2>
+                    <p class="copy">
+                      What is RTL-SDR? Ever wondered how Wi-Fi, Bluetooth, GSM(Mobile communication & Internet), GPS, Radio, DTH, Satellites work. Well they do so by the usage of electromagnetic...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+        
+              </main>
+            </section>
+        </aside>
+    </section>
+
+    <!-- ----------------------------footer---------------------------------- -->
+    <section class="footer" data-aos="fade-up" data-aos-duration="500">
+        <div class="findus"><h2>Find Us</h2></div>
+        <!-- ---------------------social icons start--------------------- -->
+  
+        <div class="foot-socials-container">
+          <div class="facebook footlogo">
+            <a href="https://www.facebook.com/electronics.iitg" target="_blank">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="facebook-f"
+                class="svg-inline--fa fa-facebook-f fa-w-10"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 320 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="youtubelogo footlogo">
+            <a
+              href="https://www.youtube.com/channel/UClPWjFXGdtjKYjZvulnUViw"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="youtube"
+                class="svg-inline--fa fa-youtube fa-w-18"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="instagram footlogo">
+            <a
+              href="https://www.instagram.com/electronicsclubiitg/"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="instagram"
+                class="svg-inline--fa fa-instagram fa-w-14"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- /* ------------------------------------form start------------------------------- */ -->
+        <form
+          id="contact-form"
+          method="post"
+          action="form-handler.php"
+          target="_blank"
+        >
+          <div>
+            <h3>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="far"
+                data-icon="envelope"
+                class="svg-inline--fa fa-envelope fa-w-16"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="#ddd"
+                  d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
+                ></path>
+              </svg>
+              Contact Us
+            </h3>
+            <br />
+            <p>
+              For any doubts/queries, feel free to contact us at
+              <span>
+                <a
+                  href="mailto:electronicsclub@iitg.ac.in"
+                  style="text-decoration: none; color: #f15925"
+                >
+                  electronicsclub@iitg.ac.in</a
+                >
+              </span>
+              OR drop a message below:
+            </p>
+          </div>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="Name (required)"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email Address (required)"
+            required
+          />
+  
+          <textarea
+            name="message"
+            class="form-control"
+            placeholder="Message (required)"
+            required
+          ></textarea>
+          <button type="submit" class="form-control-submit" value="Submit">
+            Submit
+          </button>
+        </form>
+  
+        <!-- -----------------------------------footer-footer------------------ -->
+        <div class="footer-footer">
+          <div class="techboard">
+            <a
+              href="https://iitg.ac.in/stud/gymkhana/technical/index.html"
+              target="_blank"
+            >
+              <img src="/techincal board.svg" alt="Technical Board,IITG" />
+            </a>
+          </div>
+          <div class="Rahul">Developed by Rahul Agrawal</div>
+          <div class="Kritika">Designed by Kritika Gupta</div>
+          <!-- techboard and made by and therecontacts mostly iitgwebmail id -->
+        </div>
+    </section>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            // duration: 1000,
+            // delay: 3,
+            // offset: 200,
+            // mirror: true
+        });
+    </script>
+</body>
+
+</html>
