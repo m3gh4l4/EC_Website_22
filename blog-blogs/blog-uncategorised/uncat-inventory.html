@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>landing-blog</title>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        @import url(./style.css);
+
+        ul {
+            list-style-position: inside;
+        }
+
+        @font-face {
+            font-family: msjh;
+            src: url(./fonts/msjh_0.ttf);
+            font-style: normal;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+        body {
+            color: #ddd;
+            font-family: "msjh";
+        }
+
+        .landing-container {
+            display: grid;
+            grid-template-columns: 3fr auto 1fr;
+
+            position: sticky;
+            top: 0px;
+            /* border: 5px solid green; */
+            margin: 5rem auto;
+        }
+
+        .landing-main {
+            margin: 5px 2rem;
+
+            color: #ddd;
+        }
+
+        /* main paras ubuntu font  */
+        span[class="divider"] {
+            justify-self: center;
+            display: inline-block;
+            position: sticky;
+            top: 0px;
+            width: 0;
+            height: 100vh;
+        }
+
+        .divider .divider-bar {
+            display: inline-block;
+            border-right: 2px solid rgb(4, 15, 67);
+            /* border-right: 2px solid rgb(28, 28, 184, 0.4); */
+            border-radius: 1px;
+            position: relative;
+            top: 20vh;
+            height: 60vh;
+        }
+
+        .landing-sidebar {
+            /* margin: 5rem auto; */
+            height: 100vh;
+            position: sticky;
+            top: 0px;
+            overflow-y: scroll;
+        }
+
+        .landing-sidebar::-webkit-scrollbar {
+            /* width: 1rem; */
+            border: none;
+            width: 0px;
+            /*can add scroll bar for blog section but i have removed it*/
+        }
+
+        .landing-sidebar::-webkit-scrollbar-track {
+            /* color: tomato; */
+            /* color: #ddd; */
+            background-color: rgb(4, 15, 67, 0.7);
+
+            /* background-color: transparent; */
+            /* box-shadow: inset 0px 0px 2px; */
+            border-radius: 5px;
+        }
+
+        .landing-sidebar::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #f15925;
+        }
+
+        .blogcontainer {
+            /* background-color: blueviolet; */
+            display: grid;
+            place-items: center;
+            text-align: center;
+            /* border: 2px dashed orange; */
+        }
+
+        .blogcontainer>h2 {
+            color: #f15925;
+            font-weight: 400;
+            font-size: 1.3rem;
+            width: 60%;
+            margin: 1rem;
+            /* margin-bottom: 3rem; */
+            text-align: center;
+            justify-self: center;
+        }
+
+        .page-content {
+            display: grid;
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            max-height: 300px;
+            justify-self: center;
+            max-width: 250px;
+        }
+
+        .copy {
+            line-height: 1.1rem;
+            font-size: 1rem;
+        }
+
+        .card .content {
+            font-size: 1rem;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .card .title {
+                font-size: 1.2rem;
+                font-weight: 550;
+                line-height: 1;
+            }
+
+            .card .content {
+                padding: 0;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+
+            span[class="divider"],
+            .landing-sidebar {
+                display: none;
+            }
+
+            .landing-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ---------------------------menubar---------------------------------- -->
+    <header>
+        <div class="logo">
+            <a href="./index.html">
+                <img src="./elecclublogo.svg" alt="Logo" />
+            </a>
+        </div>
+
+        <h1 class="logotext"><a href="./index.html"> Electronics Club</a></h1>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li>
+                    <a href="#">Resources</a>
+                    <ul>
+                        <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
+                        <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
+                        <li><a href="./resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a>
+                        </li>
+                        <li><a href="#">Computer Vision & AI</a></li>
+                        <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="./blog-home.html">Blogs</a>
+                    <ul>
+                        <li><a href="./blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
+                        <li><a href="./blog-core-electronics.html">Core Electronics</a></li>
+                        <li><a href="./blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
+                        <li><a href="./blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
+                        <li><a href="./blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="./team.html">Team</a></li>
+                <li><a href="./alumni.html">Alumni</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span class="navicon"></span>
+        </label>
+    </header>
+
+
+    <section class="landing-container">
+        <!-- ---------------------------------main---------------------------- -->
+        <div class="landing-main">
+
+            <article style="margin: 40px;">
+                <h2>Inventory Management system using RFID and Solenoidal Lock</h2>
+                <br /><br /><br />
+
+
+
+
+
+                <h1>Problem</h1><br><br>
+                <p>In Electronics Club there are various components kept in various cupboards.The problem is that the
+                    key is always with Secretary of club.Anyone who has to hire a component have to first contact to
+                    secy for keys.There is no check that one who has hire the keys has returned yet or not.Another
+                    problem was that there was absolute lack of a check system of who has hired the components.</p>
+                <br><br>
+
+
+                <h1>Solution</h1><br><br>
+                <p>In Electronics Club there are various components kept in various cupboards.The problem is that the
+                    key is always with Secretary of club.Anyone who has to hire a component have to first contact to
+                    secy for keys.There is no check that one who has hire the keys has returned yet or not.Another
+                    problem was that there was absolute lack of a check system of who has hired the components.</p>
+                <br><br>
+
+                <h1>Description</h1><br><br>
+                It mainly consist of three parts:-<br><br>
+                <ul>
+                <li>1.Scan using RFID card.</li>
+
+                <li>2.Proper entry in the website.</li>
+
+                <li>3.Lock system.</li></ul><br><br>
+
+                
+                <h1>Scanning using RFID card:</h1>
+                <div style="display:flex">
+                    <div style="margin-right: 40px;transform:translate(0px, 60px);">
+                        Components: Arduino Uno,RFID card reader,Jumper wires<br>
+                        For running the code in arduino,RFID Library must have to be installed.
+                        It will scan the roll no.But it will be in form of rectangular array.Then we write a python program to extract roll no.(See code in github).from the array.RFID will communicate through website using R Pi.
+                    </div>
+                    <div>
+                        <img src="images/inv1.png"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 300px;">
+                    </div>
+                </div>
+                <!-- -------------------------------------------------------------- -->
+                <br />
+                <!-- ---------------------- This is optional ---------------------- -->
+                <div class="wp-block-syntaxhighlighter-code ">
+                    <div>
+                        <div id="highlighter_979838" class="syntaxhighlighter  plain">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="gutter">
+                                            <div class="line number1 index0 alt2">1</div>
+                                            <div class="line number2 index1 alt1">2</div>
+                                            <div class="line number3 index2 alt2">3</div>
+                                            <div class="line number4 index3 alt1">4</div>
+                                            <div class="line number5 index4 alt2">5</div>
+                                            <div class="line number6 index5 alt1">6</div>
+                                            <div class="line number7 index6 alt2">7</div>
+                                            <div class="line number8 index7 alt1">8</div>
+                                            <div class="line number9 index8 alt2">9</div>
+                                            <div class="line number10 index9 alt1">10</div>
+                                            <div class="line number11 index10 alt2">11</div>
+                                            <div class="line number12 index11 alt1">12</div>
+                                            <div class="line number13 index12 alt2">13</div>
+                                            <div class="line number14 index13 alt1">14</div>
+                                            <div class="line number15 index14 alt2">15</div>
+                                            <div class="line number16 index15 alt1">16</div>
+                                            <div class="line number17 index16 alt2">17</div>
+                                            <div class="line number18 index17 alt1">18</div>
+                                            <div class="line number19 index18 alt2">19</div>
+                                            <div class="line number20 index19 alt1">20</div>
+                                            <div class="line number21 index20 alt2">21</div>
+                                            <div class="line number22 index21 alt1">22</div>
+                                            <div class="line number23 index22 alt2">23</div>
+                                            <div class="line number24 index23 alt1">24</div>
+                                            <div class="line number25 index24 alt2">25</div>
+                                            <div class="line number26 index25 alt1">26</div>
+                                            <div class="line number27 index26 alt2">27</div>
+                                            <div class="line number28 index27 alt1">28</div>
+                                            <div class="line number29 index28 alt2">29</div>
+                                            <div class="line number30 index29 alt1">30</div>
+                                            <div class="line number31 index30 alt2">31</div>
+                                        </td>
+                                        <td class="code">
+                                            <div class="container">
+                                                <div class="line number1 index0 alt2"><code
+                                                        class="plain plain">#include &lt;SPI.h&gt;</code></div>
+                                                <div class="line number2 index1 alt1"><code
+                                                        class="plain plain">#include &lt;MFRC522.h&gt;</code></div>
+                                                <div class="line number3 index2 alt2">&nbsp;</div>
+                                                <div class="line number4 index3 alt1"><code
+                                                        class="plain plain">#define RST_PIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Configurable, see typical pin layout above</code>
+                                                </div>
+                                                <div class="line number5 index4 alt2"><code
+                                                        class="plain plain">#define SS_PIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Configurable, see typical pin layout above</code>
+                                                </div>
+                                                <div class="line number6 index5 alt1">&nbsp;</div>
+                                                <div class="line number7 index6 alt2"><code
+                                                        class="plain plain">MFRC522 mfrc522(SS_PIN, RST_PIN);&nbsp; // Create MFRC522 instance</code>
+                                                </div>
+                                                <div class="line number8 index7 alt1">&nbsp;</div>
+                                                <div class="line number9 index8 alt2"><code
+                                                        class="plain plain">void setup() {</code></div>
+                                                <div class="line number10 index9 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">Serial.begin(9600);&nbsp;&nbsp;&nbsp;&nbsp; // Initialize serial communications with the PC</code>
+                                                </div>
+                                                <div class="line number11 index10 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">while (!Serial);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Do nothing if no serial port is opened (added for Arduinos based on ATMEGA32U4)</code>
+                                                </div>
+                                                <div class="line number12 index11 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">SPI.begin();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Init SPI bus</code>
+                                                </div>
+                                                <div class="line number13 index12 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">mfrc522.PCD_Init();&nbsp;&nbsp;&nbsp;&nbsp; // Init MFRC522</code>
+                                                </div>
+                                                <div class="line number14 index13 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">mfrc522.PCD_DumpVersionToSerial();&nbsp; // Show details of PCD - MFRC522 Card Reader details</code>
+                                                </div>
+                                                <div class="line number15 index14 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">Serial.println(F("Scan PICC to see UID, SAK, type, and data blocks..."));</code>
+                                                </div>
+                                                <div class="line number16 index15 alt1"><code
+                                                        class="plain plain">}</code></div>
+                                                <div class="line number17 index16 alt2">&nbsp;</div>
+                                                <div class="line number18 index17 alt1"><code
+                                                        class="plain plain">void loop() {</code></div>
+                                                <div class="line number19 index18 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">// Look for new cards</code></div>
+                                                <div class="line number20 index19 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">if ( ! mfrc522.PICC_IsNewCardPresent()) {</code>
+                                                </div>
+                                                <div class="line number21 index20 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">return;</code></div>
+                                                <div class="line number22 index21 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">}</code></div>
+                                                <div class="line number23 index22 alt2">&nbsp;</div>
+                                                <div class="line number24 index23 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">// Select one of the cards</code></div>
+                                                <div class="line number25 index24 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">if ( ! mfrc522.PICC_ReadCardSerial()) {</code>
+                                                </div>
+                                                <div class="line number26 index25 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">return;</code></div>
+                                                <div class="line number27 index26 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">}</code></div>
+                                                <div class="line number28 index27 alt1">&nbsp;</div>
+                                                <div class="line number29 index28 alt2"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">// Dump debug info about the card; PICC_HaltA() is automatically called</code>
+                                                </div>
+                                                <div class="line number30 index29 alt1"><code
+                                                        class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                        class="plain plain">mfrc522.PICC_DumpToSerial(&amp;(mfrc522.uid));</code>
+                                                </div>
+                                                <div class="line number31 index30 alt2"><code
+                                                        class="plain plain">}</code></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                
+
+                <h1>Website:</h1>
+                <p>It consist of a dynamic website.Front end of the website is made using HTML.Back end is made using Flask.
+
+                    Github link is given below:
+                    
+                    <a href = "https://github.com/niteshjindalxb/Electronics_Inventory/tree/master/Raspberry%20pi%20-%20Rollno%20detector/MFRC522-python-master" target = "_blank">https://github.com/niteshjindalxb/Electronics_Inventory/tree/master/Raspberry%20pi%20-%20Rollno%20detector/MFRC522-python-master</a></p>
+
+
+                <br />
+                <!-- ---------------------- This is optional ---------------------- -->
+
+
+                <h1>Lock System:</h1>
+                <div style="display:flex">
+                    <div style="margin-right: 80px;transform:translate(0px, 60px);">
+                        <p>After proper entry,website will either sent ‘1’to open the lock and ‘0’to remain closed.Nodemcu will create a server to communicate between website and lock.<br>
+
+                            Components: breadboard,Nodemcu,Solenoidal lock,Lipo Battery
+                            Thus finally a full fledged Inventory Management System is Ready.</p>
+                    </div>
+                    <div>
+                        <img src="images/inv2.png"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 200px;">
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                
+
+                <h1>Team Members</h1>
+
+                <br />
+                <p>1. Nitesh Jindal 2. Utkarsh Jaiswal 3. Mayank Tantuway 4. Anand Trehan 5. Ankita Singh 6. Divyanshu Shah 7. Sonali Utage 8. SPS Pranav 9. Tanvish 10.Surya Srikar11.KeerthiVasan 12.Krishna Koushik</p>
+
+
+
+
+
+
+
+
+                <!-- ------------------------------------------------------------ -->
+            </article>
+        </div>
+        <span class="divider">
+            <span class="divider-bar"></span>
+        </span>
+
+        <!-- ----------------------aside------------------------ -->
+        <aside class="landing-sidebar">
+            <section class="blogcontainer">
+                <h2>Check out our other posts</h2>
+                <br />
+                <!-- background images are added using css nth child -->
+                <main class="page-content">
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">Article heading</h2>
+                            <p class="copy">
+                                Check out our article its awesome you guys, gun at your head,
+                                fricking read it you'll learn something
+                            </p>
+                            <button class="btn">View</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">Article heading</h2>
+                            <p class="copy">
+                                Check out our article its awesome you guys, gun at your head,
+                                fricking read it you'll learn something
+                            </p>
+                            <button class="btn">View</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">Article heading</h2>
+                            <p class="copy">
+                                Check out our article its awesome you guys, gun at your head,
+                                fricking read it you'll learn something
+                            </p>
+                            <button class="btn">View</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">Article heading</h2>
+                            <p class="copy">
+                                Check out our article its awesome you guys, gun at your head,
+                                fricking read it you'll learn something
+                            </p>
+                            <button class="btn">View</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">Article heading</h2>
+                            <p class="copy">
+                                Check out our article its awesome you guys, gun at your head,
+                                fricking read it you'll learn something
+                            </p>
+                            <button class="btn">View</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">Brain Storming</h2>
+                            <p class="copy">Check out all of these hacking tips</p>
+                            <button class="btn">View</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">To The Lab</h2>
+                            <p class="copy">Plan your next visit to our club</p>
+                            <button class="btn">View</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">IOT</h2>
+                            <p class="copy">It's the thing you've always dreamed of</p>
+                            <button class="btn">goto</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <h2 class="title">Explore</h2>
+                            <p class="copy">
+                                Seriously, just blast off into outer space today
+                            </p>
+                            <button class="btn">goto</button>
+                        </div>
+                    </div>
+                </main>
+            </section>
+        </aside>
+    </section>
+
+    <!-- ----------------------------footer---------------------------------- -->
+    <section class="footer" data-aos="fade-up" data-aos-duration="500">
+        <div class="findus">
+            <h2>Find Us</h2>
+        </div>
+        <!-- ---------------------social icons start--------------------- -->
+
+        <div class="foot-socials-container">
+            <div class="facebook footlogo">
+                <a href="https://www.facebook.com/electronics.iitg" target="_blank">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
+                        class="svg-inline--fa fa-facebook-f fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512">
+                        <path fill="currentColor"
+                            d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="youtubelogo footlogo">
+                <a href="https://www.youtube.com/channel/UClPWjFXGdtjKYjZvulnUViw" target="_blank">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube"
+                        class="svg-inline--fa fa-youtube fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 576 512">
+                        <path fill="currentColor"
+                            d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="instagram footlogo">
+                <a href="https://www.instagram.com/electronicsclubiitg/" target="_blank">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
+                        class="svg-inline--fa fa-instagram fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512">
+                        <path fill="currentColor"
+                            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <!-- /* ------------------------------------form start------------------------------- */ -->
+        <form id="contact-form" method="post" action="form-handler.php" target="_blank">
+            <div>
+                <h3>
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="envelope"
+                        class="svg-inline--fa fa-envelope fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512">
+                        <path fill="#ddd"
+                            d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z">
+                        </path>
+                    </svg>
+                    Contact Us
+                </h3>
+                <br />
+                <p>
+                    For any doubts/queries, feel free to contact us at
+                    <span>
+                        <a href="mailto:electronicsclub@iitg.ac.in" style="text-decoration: none; color: #f15925">
+                            electronicsclub@iitg.ac.in</a>
+                    </span>
+                    OR drop a message below:
+                </p>
+            </div>
+            <input type="text" name="name" class="form-control" placeholder="Name (required)" required />
+            <input type="email" name="email" class="form-control" placeholder="Email Address (required)" required />
+
+            <textarea name="message" class="form-control" placeholder="Message (required)" required></textarea>
+            <button type="submit" class="form-control-submit" value="Submit">
+                Submit
+            </button>
+        </form>
+
+        <!-- -----------------------------------footer-footer------------------ -->
+        <div class="footer-footer">
+            <div class="techboard">
+                <a href="https://iitg.ac.in/stud/gymkhana/technical/index.html" target="_blank">
+                    <img src="./techincal board.svg" alt="Technical Board,IITG" />
+                </a>
+            </div>
+            <div class="Rahul">Developed by Rahul Agrawal</div>
+            <div class="Kritika">Designed by Kritika Gupta</div>
+            <!-- techboard and made by and therecontacts mostly iitgwebmail id -->
+        </div>
+    </section>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            // duration: 1000,
+            // delay: 3,
+            // offset: 200,
+            // mirror: true
+        });
+    </script>
+</body>
+
+</html>
