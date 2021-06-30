@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>landing-blog</title>
+        <title>Coding | Paper-Piano</title>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <style>
@@ -205,7 +205,7 @@
                         set the threshold accordingly.
                     </div>
                     <div>
-                        <img src="images/paper1.png" style="
+                        <img src="/blog-pics/coding/paper-piano/paper1.png" style="
                   margin-top: 40px;
                   border-radius: 6px;
                   margin-bottom: 40px;
@@ -241,7 +241,7 @@
 
                 <h1>The Roadmap (Schematics)</h1>
                 <br /><br />
-                <img src="images/paper1.png" />
+                <img src="/blog-pics/coding/paper-piano/" alt=""/>
 
                 <h1 style="margin-top: 40px">Your Quest (Hardware build)</h1>
                 <br /><br />
@@ -274,85 +274,88 @@
                 <h1>The Mythical Texts (Coding Time)</h1>
                 <br /><br />
                 <!-- <pre class="wp-block-code"> -->
-                <code>//Electronics Club IITG
+                <pre class="wp-block"> 
+                  <code>
+    //Electronics Club IITG
 
-            // Import the CapacitiveSensor Library.
-            #include &lt;CapacitiveSensor.h&gt;
-             
-            #define speaker 11
-            
-            // Set the Send Pin &amp; Receive Pin.
-            CapacitiveSensor   cs_2_3 = CapacitiveSensor(2,3);        
-            CapacitiveSensor   cs_2_4 = CapacitiveSensor(2,4);         
-            CapacitiveSensor   cs_2_5 = CapacitiveSensor(2,5);     
-            CapacitiveSensor   cs_2_6 = CapacitiveSensor(2,6);     
-            CapacitiveSensor   cs_2_7 = CapacitiveSensor(2,7);      
-            CapacitiveSensor   cs_2_8 = CapacitiveSensor(2,8);         
-            CapacitiveSensor   cs_2_9 = CapacitiveSensor(2,9);  
-            CapacitiveSensor   cs_2_10 = CapacitiveSensor(2,10);  
-            
-            void setup() 
-            {
-              cs_2_6.set_CS_AutocaL_Millis(0xFFFFFFFF);     // turn off re calibration
-              // Start serial
-              Serial.begin(9600);
-            }
-            
-            
-            void loop() {
-               // Set a timer.
-              long start = millis();
-              
-              // Set the sensitivity of the sensors.
-              long key1 =  cs_2_3.capacitiveSensor(3000);
-              long key2 =  cs_2_4.capacitiveSensor(3000);
-              long key3 =  cs_2_5.capacitiveSensor(3000);
-              long key4 =  cs_2_6.capacitiveSensor(3000);
-              long key5 =  cs_2_7.capacitiveSensor(3000);
-              long key6 =  cs_2_8.capacitiveSensor(3000);
-              long key7 =  cs_2_9.capacitiveSensor(3000);
-              long key8 =  cs_2_10.capacitiveSensor(3000);
-              int thres = 5000;
-            
-              Serial.print(millis() - start);        // check on performance in milliseconds
-              Serial.print("\t");                    // tab character for debug windown spacing
-              // Print outputs
-              Serial.print(key1);                  
-              Serial.print("\t");                   
-              Serial.print(key2);   
-              Serial.print("\t");                  
-              Serial.print(key3);            
-              Serial.print("\t");                   
-              Serial.print(key4);                
-              Serial.print("\t");                    
-              Serial.print(key5);            
-              Serial.print("\t");                
-              Serial.print(key6);
-              Serial.print("\t");                  
-              Serial.print(key7);                                                    
-              Serial.print("\t");
-              Serial.println(key8);            
-              
-              // Produce tone on touching the capacitive sensor
-              // Set the threshold for each key
-              // visit https://www.arduino.cc/en/Tutorial/toneMelody for frequency settings
-              if (key1 &gt; thres) tone(speaker,131);   
-              if (key2 &gt; thres) tone(speaker,147);   
-              if (key3 &gt; thres) tone(speaker,165);
-              if (key4 &gt; thres) tone(speaker,175);
-              if (key5 &gt; thres) tone(speaker,196);
-              if (key6 &gt; thres) tone(speaker,220);
-              if (key7 &gt; thres) tone(speaker,247);
-              if (key8 &gt; thres) tone(speaker,262);
-              
-              // When none of them is touched no tone is produced.
-              if (key1&lt;=thres  &amp;  key2&lt;=thres  &amp;  key3&lt;=thres &amp; key4&lt;=thres  &amp;  key5&lt;=thres &amp;  key6&lt;=thres &amp;  key7&lt;=thres &amp;  key8&lt;=thres)
-                noTone(speaker);
-              delay(10); // arbitrary delay to limit data to serial port 
-                                           
-            }
-                </code>
-                <!-- </pre> -->
+// Import the CapacitiveSensor Library.
+#include &lt;CapacitiveSensor.h&gt;
+
+#define speaker 11
+
+// Set the Send Pin &amp; Receive Pin.
+CapacitiveSensor   cs_2_3 = CapacitiveSensor(2,3);        
+CapacitiveSensor   cs_2_4 = CapacitiveSensor(2,4);         
+CapacitiveSensor   cs_2_5 = CapacitiveSensor(2,5);     
+CapacitiveSensor   cs_2_6 = CapacitiveSensor(2,6);     
+CapacitiveSensor   cs_2_7 = CapacitiveSensor(2,7);      
+CapacitiveSensor   cs_2_8 = CapacitiveSensor(2,8);         
+CapacitiveSensor   cs_2_9 = CapacitiveSensor(2,9);  
+CapacitiveSensor   cs_2_10 = CapacitiveSensor(2,10);  
+
+void setup() 
+{
+  cs_2_6.set_CS_AutocaL_Millis(0xFFFFFFFF);     // turn off re calibration
+  // Start serial
+  Serial.begin(9600);
+}
+
+
+void loop() {
+  // Set a timer.
+  long start = millis();
+  
+  // Set the sensitivity of the sensors.
+  long key1 =  cs_2_3.capacitiveSensor(3000);
+  long key2 =  cs_2_4.capacitiveSensor(3000);
+  long key3 =  cs_2_5.capacitiveSensor(3000);
+  long key4 =  cs_2_6.capacitiveSensor(3000);
+  long key5 =  cs_2_7.capacitiveSensor(3000);
+  long key6 =  cs_2_8.capacitiveSensor(3000);
+  long key7 =  cs_2_9.capacitiveSensor(3000);
+  long key8 =  cs_2_10.capacitiveSensor(3000);
+  int thres = 5000;
+
+  Serial.print(millis() - start);        // check on performance in milliseconds
+  Serial.print("\t");                    // tab character for debug windown spacing
+  // Print outputs
+  Serial.print(key1);                  
+  Serial.print("\t");                   
+  Serial.print(key2);   
+  Serial.print("\t");                  
+  Serial.print(key3);            
+  Serial.print("\t");                   
+  Serial.print(key4);                
+  Serial.print("\t");                    
+  Serial.print(key5);            
+  Serial.print("\t");                
+  Serial.print(key6);
+  Serial.print("\t");                  
+  Serial.print(key7);                                                    
+  Serial.print("\t");
+  Serial.println(key8);            
+  
+  // Produce tone on touching the capacitive sensor
+  // Set the threshold for each key
+  // visit https://www.arduino.cc/en/Tutorial/toneMelody for frequency settings
+  if (key1 &gt; thres) tone(speaker,131);   
+  if (key2 &gt; thres) tone(speaker,147);   
+  if (key3 &gt; thres) tone(speaker,165);
+  if (key4 &gt; thres) tone(speaker,175);
+  if (key5 &gt; thres) tone(speaker,196);
+  if (key6 &gt; thres) tone(speaker,220);
+  if (key7 &gt; thres) tone(speaker,247);
+  if (key8 &gt; thres) tone(speaker,262);
+  
+  // When none of them is touched no tone is produced.
+  if (key1&lt;=thres  &amp;  key2&lt;=thres  &amp;  key3&lt;=thres &amp; key4&lt;=thres
+    &amp;  key5&lt;=thres &amp;  key6&lt;=thres &amp;  key7&lt;=thres &amp;  key8&lt;=thres)
+    noTone(speaker);
+  delay(10); // arbitrary delay to limit data to serial port 
+                              
+}
+                  </code>
+                </pre>
                 <br /><br /><center>
                 <iframe width="600" height="450"
                 src="https://www.youtube.com/embed/yHFyCF4n_CY">

@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding | Face-Recog</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url(/style.css);
+        @font-face {
+        font-family: msjh;
+        src: url(/fonts/msjh_0.ttf);
+        font-style: normal;
+        }
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+        body {
+        color: #ddd;
+        font-family: "msjh";
+        }
+        .landing-container {
+        display: grid;
+        grid-template-columns: 3fr auto 1fr;
+
+        position: sticky;
+        top: 0px;
+        /* border: 5px solid green; */
+        margin: 5rem auto;
+        }
+        .landing-main {
+        margin: 5px 2rem;
+
+        color: #ddd;
+        }
+        /* main paras ubuntu font  */
+        span[class="divider"] {
+        justify-self: center;
+        display: inline-block;
+        position: sticky;
+        top: 0px;
+        width: 0;
+        height: 100vh;
+        }
+        .divider .divider-bar {
+        display: inline-block;
+        border-right: 2px solid rgb(4, 15, 67);
+        /* border-right: 2px solid rgb(28, 28, 184, 0.4); */
+        border-radius: 1px;
+        position: relative;
+        top: 20vh;
+        height: 60vh;
+        }
+        .landing-sidebar {
+        /* margin: 5rem auto; */
+        height: 100vh;
+        position: sticky;
+        top: 0px;
+        overflow-y: scroll;
+        }
+        .landing-sidebar::-webkit-scrollbar {
+        /* width: 1rem; */
+        border: none;
+        width: 0px; /*can add scroll bar for blog section but i have removed it*/
+        }
+        .landing-sidebar::-webkit-scrollbar-track {
+        /* color: tomato; */
+        /* color: #ddd; */
+        background-color: rgb(4, 15, 67, 0.7);
+
+        /* background-color: transparent; */
+        /* box-shadow: inset 0px 0px 2px; */
+        border-radius: 5px;
+        }
+        .landing-sidebar::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #f15925;
+        }
+        .blogcontainer {
+        /* background-color: blueviolet; */
+        display: grid;
+        place-items: center;
+        text-align: center;
+        /* border: 2px dashed orange; */
+        }
+        .blogcontainer > h2 {
+        color: #f15925;
+        font-weight: 400;
+        font-size: 1.3rem;
+        width: 60%;
+        margin: 1rem;
+        /* margin-bottom: 3rem; */
+        text-align: center;
+        justify-self: center;
+        }
+        .page-content {
+        display: grid;
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        grid-template-columns: 1fr;
+        }
+        .card {
+        max-height: 300px;
+        justify-self: center;
+        max-width: 250px;
+        }
+        .copy {
+        line-height: 1.1rem;
+        font-size: 1rem;
+        }
+        .card .content {
+        font-size: 1rem;
+        }
+        @media screen and (max-width: 1000px) {
+        .card .title {
+            font-size: 1.2rem;
+            font-weight: 550;
+            line-height: 1;
+        }
+        .card .content {
+            padding: 0;
+        }
+        }
+        @media screen and (max-width: 700px) {
+        span[class="divider"],
+        .landing-sidebar {
+            display: none;
+        }
+        .landing-container {
+            grid-template-columns: 1fr;
+        }
+        }
+    </style>
+</head>
+<body>
+    <!-- ---------------------------menubar---------------------------------- -->
+    <header>
+        <div class="logo">
+          <a href="/index.html">
+            <img src="/elecclublogo.svg" alt="Logo" />
+          </a>
+        </div>
+  
+        <h1 class="logotext"><a href="/index.html"> Electronics Club</a></h1>
+  
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <nav>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li>
+              <a href="#">Resources</a>
+              <ul>
+                <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
+                <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
+                <li><a href="/resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a></li>
+                <li><a href="#">Computer Vision & AI</a></li>
+                <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/blog-home.html">Blogs</a>
+              <ul>
+                <li><a href="/blog-blogs/blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
+                <li><a href="/blog-blogs/blog-core-electronics.html">Core Electronics</a></li>
+                <li><a href="/blog-blogs/blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
+                <li><a href="/blog-blogs/blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
+                <li><a href="/blog-blogs/blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
+                
+              </ul>
+            </li>
+            <li><a href="/team.html">Team</a></li>
+            <li><a href="/alumni.html">Alumni</a></li>
+          </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span class="navicon"></span>
+        </label>
+    </header>
+
+
+    <section class="landing-container">
+        <!-- ---------------------------------main---------------------------- -->
+        <div class="landing-main">
+
+            <article style="margin: 40px;">
+                <h1>FACE RECOGNITION Door Lock</h1>
+                <br /><br /><br />
+
+                <!-- ---------------------- This is optional ---------------------- -->
+
+                <div style="display:flex">
+                    <div style="margin-right: 80px;transform:translate(0px, 60px);">
+                        Are you fed up of losing your room keys? Or are you fed up of remembering which key opens which
+                        lock?<br><br>
+                        To solve these problems, we present to you the face recognition door lock.
+                        The main purpose of the project is to improve security systems in homes, offices etc. The idea
+                        is to unlock a door by recognizing the face of an authorized person.<br><br>
+                        The whole process can be divided in three major steps –<br><br>
+                        <ul>
+                            <li>The first step is to create a good database of faces of the authorised person.</li>
+                            <li>The next step is to supply images from the database and use them to train the system.
+                            </li>
+                            <li>The last step is to test the face recognizer to recognize faces it was trained for</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="/blog-pics/coding/face-recog/face1.jpg"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 200px;">
+                    </div>
+                </div>
+                <br />
+
+
+
+                <h1>Database:</h1><br><br>
+                <p style="margin-right:80px">For this, we will use a Database that contains 500 images of the authorized
+                    person. In each image, the individual has a different facial expression like happy, sad, normal,
+                    surprised, sleepy etc.These images are used to train the system.</p><br><br>
+
+                <h1>Implementaion:</h1><br><br>
+                <p>
+                    We have to import the required modules to the program-<br><br>
+                <ul>
+                    <li>cv2 – This is the OpenCV module and contains the functions for face detection and recognition.
+                    </li>
+                    <li>os – This module will be used to maneuver with image and directory names. First, we will use
+                        this
+                        module to extract the image names in the database directory and then from these names we will
+                        extract the individual number, which will be used as a label for the face in that image.</li>
+                    <li>Image – Since, the dataset images are in gif format and as of now, OpenCV does not support gif
+                        format, we will use Image module from PIL to read the image in grayscale format.</li>
+                    <li>numpy – Our images will be stored in numpy arrays.</li>
+                </ul>
+                </p>
+
+                <br />
+                <br />
+
+                <h1>
+                    Face Detection:
+                </h1><br><br>
+                <p>The first step is to detect the face in each image. Once, we get the region of interest containing
+                    the face in the image, we will use it for training the recognizer. For the purpose of face
+                    detection, we will use the Haar Cascade provided by OpenCV. The haar cascade is an xml file which
+                    contains information about the distinct features of a human face like the presence of
+                    eyes,ears,nose,chin etc.These features distinguishes the human faces from other objects.</p>
+                <br><br>Human face detection::<br><br>
+
+                <div style="tab-size: 8" id="gist46282140" class="gist">
+                    <div class="gist-file" translate="no">
+                        <div class="gist-data">
+                            <div class="js-gist-file-update-container js-task-list-container file-box">
+                                <div id="file-detectface-py" class="file my-2">
+                                    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+                                        <table class="highlight tab-size js-file-line-container" data-tab-size="8"
+                                            data-paste-markdown-skip="">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="file-detectface-py-L1" class="blob-num js-line-number"
+                                                        data-line-number="1"></td>
+                                                    <td id="file-detectface-py-LC1"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">cv2</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L2" class="blob-num js-line-number"
+                                                        data-line-number="2"></td>
+                                                    <td id="file-detectface-py-LC2"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">numpy</span>
+                                                        <span class="pl-k">as</span> <span class="pl-s1">np</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L3" class="blob-num js-line-number"
+                                                        data-line-number="3"></td>
+                                                    <td id="file-detectface-py-LC3"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">face_cascade</span> <span
+                                                            class="pl-c1">=</span> <span class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">CascadeClassifier</span>(<span
+                                                            class="pl-s">'<span
+                                                                class="skimlinks-unlinked">haarcascade_frontalface_default.xml</span>'</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L4" class="blob-num js-line-number"
+                                                        data-line-number="4"></td>
+                                                    <td id="file-detectface-py-LC4"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L5" class="blob-num js-line-number"
+                                                        data-line-number="5"></td>
+                                                    <td id="file-detectface-py-LC5"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">isopen</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">VideoCapture</span>(<span
+                                                            class="pl-c1">0</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L6" class="blob-num js-line-number"
+                                                        data-line-number="6"></td>
+                                                    <td id="file-detectface-py-LC6"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">while</span>(<span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">isOpened</span>()):</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L7" class="blob-num js-line-number"
+                                                        data-line-number="7"></td>
+                                                    <td id="file-detectface-py-LC7"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">ret</span>, <span
+                                                            class="pl-s1">img</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">read</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L8" class="blob-num js-line-number"
+                                                        data-line-number="8"></td>
+                                                    <td id="file-detectface-py-LC8"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">gray</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">cvtColor</span>(<span
+                                                            class="pl-s1">img</span>,<span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">COLOR_BGR2GRAY</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L9" class="blob-num js-line-number"
+                                                        data-line-number="9"></td>
+                                                    <td id="file-detectface-py-LC9"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">faces</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">face_cascade</span>.<span
+                                                            class="pl-en">detectMultiScale</span>(<span
+                                                            class="pl-s1">gray</span>,<span
+                                                            class="pl-c1">1.3</span>,<span class="pl-c1">5</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L10" class="blob-num js-line-number"
+                                                        data-line-number="10"></td>
+                                                    <td id="file-detectface-py-LC10"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span>(<span class="pl-s1">x</span>,<span
+                                                            class="pl-s1">y</span>,<span class="pl-s1">w</span>,<span
+                                                            class="pl-s1">h</span>) <span class="pl-c1">in</span> <span
+                                                            class="pl-s1">faces</span>:</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L11" class="blob-num js-line-number"
+                                                        data-line-number="11"></td>
+                                                    <td id="file-detectface-py-LC11"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">rectangle</span>(<span
+                                                            class="pl-s1">img</span>,(<span class="pl-s1">x</span>,<span
+                                                            class="pl-s1">y</span>),(<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>,<span
+                                                            class="pl-s1">y</span><span class="pl-c1">+</span><span
+                                                            class="pl-s1">h</span>),(<span
+                                                            class="pl-c1">255</span>,<span class="pl-c1">0</span>,<span
+                                                            class="pl-c1">0</span>),<span class="pl-c1">2</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L12" class="blob-num js-line-number"
+                                                        data-line-number="12"></td>
+                                                    <td id="file-detectface-py-LC12"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">roi_gray</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">gray</span>[<span
+                                                            class="pl-s1">y</span>:<span class="pl-s1">y</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">h</span>,<span
+                                                            class="pl-s1">x</span>:<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>]
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L13" class="blob-num js-line-number"
+                                                        data-line-number="13"></td>
+                                                    <td id="file-detectface-py-LC13"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">roi_color</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">img</span>[<span
+                                                            class="pl-s1">y</span>:<span class="pl-s1">y</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">h</span>,<span
+                                                            class="pl-s1">x</span>:<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>]
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L14" class="blob-num js-line-number"
+                                                        data-line-number="14"></td>
+                                                    <td id="file-detectface-py-LC14"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imshow</span>(<span
+                                                            class="pl-s">'temp'</span>,<span
+                                                            class="pl-s1">roi_color</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L15" class="blob-num js-line-number"
+                                                        data-line-number="15"></td>
+                                                    <td id="file-detectface-py-LC15"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L16" class="blob-num js-line-number"
+                                                        data-line-number="16"></td>
+                                                    <td id="file-detectface-py-LC16"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imshow</span>(<span
+                                                            class="pl-s">'img'</span>,<span class="pl-s1">img</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L17" class="blob-num js-line-number"
+                                                        data-line-number="17"></td>
+                                                    <td id="file-detectface-py-LC17"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">if</span> <span class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">waitKey</span>(<span class="pl-c1">10</span>)
+                                                        <span class="pl-c1">&amp;</span> <span class="pl-c1">0xFF</span>
+                                                        <span class="pl-c1">==</span> <span
+                                                            class="pl-en">ord</span>(<span class="pl-s">'q'</span>):
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L18" class="blob-num js-line-number"
+                                                        data-line-number="18"></td>
+                                                    <td id="file-detectface-py-LC18"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">release</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L19" class="blob-num js-line-number"
+                                                        data-line-number="19"></td>
+                                                    <td id="file-detectface-py-LC19"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">destroyAllWindows</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L20" class="blob-num js-line-number"
+                                                        data-line-number="20"></td>
+                                                    <td id="file-detectface-py-LC20"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-detectface-py-L21" class="blob-num js-line-number"
+                                                        data-line-number="21"></td>
+                                                    <td id="file-detectface-py-LC21"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gist-meta">
+                            <a href="https://gist.github.com/anonymous/20ed41ba148605b7429713157289d044/raw/511a4f2459e018698af1a76e655a221430715fc2/detectface.py"
+                                style="float:right">view raw</a><br>
+
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+
+                <br><br>Capturing detected Face ::<br><br>
+
+                <div style="tab-size: 8" id="gist46282277" class="gist">
+                    <div class="gist-file" translate="no">
+                        <div class="gist-data">
+                            <div class="js-gist-file-update-container js-task-list-container file-box">
+                                <div id="file-snapshot-py" class="file my-2">
+                                    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+                                        <table class="highlight tab-size js-file-line-container" data-tab-size="8"
+                                            data-paste-markdown-skip="">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L1" class="blob-num js-line-number"
+                                                        data-line-number="1"></td>
+                                                    <td id="file-snapshot-py-LC1"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">cv2</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L2" class="blob-num js-line-number"
+                                                        data-line-number="2"></td>
+                                                    <td id="file-snapshot-py-LC2"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">numpy</span>
+                                                        <span class="pl-k">as</span> <span class="pl-s1">np</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L3" class="blob-num js-line-number"
+                                                        data-line-number="3"></td>
+                                                    <td id="file-snapshot-py-LC3"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">face_cascade</span> <span
+                                                            class="pl-c1">=</span> <span class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">CascadeClassifier</span>(<span
+                                                            class="pl-s">'<span
+                                                                class="skimlinks-unlinked">haarcascade_frontalface_default.xml</span>'</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L4" class="blob-num js-line-number"
+                                                        data-line-number="4"></td>
+                                                    <td id="file-snapshot-py-LC4"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L5" class="blob-num js-line-number"
+                                                        data-line-number="5"></td>
+                                                    <td id="file-snapshot-py-LC5"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">isopen</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">VideoCapture</span>(<span
+                                                            class="pl-c1">0</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L6" class="blob-num js-line-number"
+                                                        data-line-number="6"></td>
+                                                    <td id="file-snapshot-py-LC6"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">while</span>(<span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">isOpened</span>()):</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L7" class="blob-num js-line-number"
+                                                        data-line-number="7"></td>
+                                                    <td id="file-snapshot-py-LC7"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span> <span class="pl-s1">i</span> <span
+                                                            class="pl-c1">in</span> <span
+                                                            class="pl-en">range</span>(<span
+                                                            class="pl-c1">1</span>,<span class="pl-c1">1000</span>):
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L8" class="blob-num js-line-number"
+                                                        data-line-number="8"></td>
+                                                    <td id="file-snapshot-py-LC8"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">ret</span>, <span
+                                                            class="pl-s1">img</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">read</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L9" class="blob-num js-line-number"
+                                                        data-line-number="9"></td>
+                                                    <td id="file-snapshot-py-LC9"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">gray</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">cvtColor</span>(<span
+                                                            class="pl-s1">img</span>,<span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">COLOR_BGR2GRAY</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L10" class="blob-num js-line-number"
+                                                        data-line-number="10"></td>
+                                                    <td id="file-snapshot-py-LC10"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">faces</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">face_cascade</span>.<span
+                                                            class="pl-en">detectMultiScale</span>(<span
+                                                            class="pl-s1">gray</span>,<span
+                                                            class="pl-c1">1.3</span>,<span class="pl-c1">5</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L11" class="blob-num js-line-number"
+                                                        data-line-number="11"></td>
+                                                    <td id="file-snapshot-py-LC11"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L12" class="blob-num js-line-number"
+                                                        data-line-number="12"></td>
+                                                    <td id="file-snapshot-py-LC12"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span>(<span class="pl-s1">x</span>,<span
+                                                            class="pl-s1">y</span>,<span class="pl-s1">w</span>,<span
+                                                            class="pl-s1">h</span>) <span class="pl-c1">in</span> <span
+                                                            class="pl-s1">faces</span>:</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L13" class="blob-num js-line-number"
+                                                        data-line-number="13"></td>
+                                                    <td id="file-snapshot-py-LC13"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">rectangle</span>(<span
+                                                            class="pl-s1">img</span>,(<span class="pl-s1">x</span>,<span
+                                                            class="pl-s1">y</span>),(<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>,<span
+                                                            class="pl-s1">y</span><span class="pl-c1">+</span><span
+                                                            class="pl-s1">h</span>),(<span
+                                                            class="pl-c1">255</span>,<span class="pl-c1">0</span>,<span
+                                                            class="pl-c1">0</span>),<span class="pl-c1">2</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L14" class="blob-num js-line-number"
+                                                        data-line-number="14"></td>
+                                                    <td id="file-snapshot-py-LC14"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">roi_gray</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">gray</span>[<span
+                                                            class="pl-s1">y</span>:<span class="pl-s1">y</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">h</span>,<span
+                                                            class="pl-s1">x</span>:<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>]
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L15" class="blob-num js-line-number"
+                                                        data-line-number="15"></td>
+                                                    <td id="file-snapshot-py-LC15"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">roi_color</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">img</span>[<span
+                                                            class="pl-s1">y</span>:<span class="pl-s1">y</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">h</span>,<span
+                                                            class="pl-s1">x</span>:<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>]
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L16" class="blob-num js-line-number"
+                                                        data-line-number="16"></td>
+                                                    <td id="file-snapshot-py-LC16"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imshow</span>(<span
+                                                            class="pl-s">"temp"</span>,<span
+                                                            class="pl-s1">roi_color</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L17" class="blob-num js-line-number"
+                                                        data-line-number="17"></td>
+                                                    <td id="file-snapshot-py-LC17"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L18" class="blob-num js-line-number"
+                                                        data-line-number="18"></td>
+                                                    <td id="file-snapshot-py-LC18"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L19" class="blob-num js-line-number"
+                                                        data-line-number="19"></td>
+                                                    <td id="file-snapshot-py-LC19"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L20" class="blob-num js-line-number"
+                                                        data-line-number="20"></td>
+                                                    <td id="file-snapshot-py-LC20"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">waitKey</span>(<span class="pl-c1">100</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L21" class="blob-num js-line-number"
+                                                        data-line-number="21"></td>
+                                                    <td id="file-snapshot-py-LC21"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imwrite</span>(<span
+                                                            class="pl-s">"Train\itesh.1."</span><span
+                                                            class="pl-c1">+</span><span class="pl-en">str</span>(<span
+                                                            class="pl-s1">i</span>)<span class="pl-c1">+</span><span
+                                                            class="pl-s">".png"</span>,<span
+                                                            class="pl-s1">roi_color</span>) </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L22" class="blob-num js-line-number"
+                                                        data-line-number="22"></td>
+                                                    <td id="file-snapshot-py-LC22"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-en">print</span>(<span class="pl-s1">i</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L23" class="blob-num js-line-number"
+                                                        data-line-number="23"></td>
+                                                    <td id="file-snapshot-py-LC23"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imshow</span>(<span
+                                                            class="pl-s">"img"</span>,<span class="pl-s1">img</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L24" class="blob-num js-line-number"
+                                                        data-line-number="24"></td>
+                                                    <td id="file-snapshot-py-LC24"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">if</span> <span class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">waitKey</span>(<span class="pl-c1">10</span>)
+                                                        <span class="pl-c1">&amp;</span> <span class="pl-c1">0xFF</span>
+                                                        <span class="pl-c1">==</span> <span
+                                                            class="pl-en">ord</span>(<span class="pl-s">'q'</span>):
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L25" class="blob-num js-line-number"
+                                                        data-line-number="25"></td>
+                                                    <td id="file-snapshot-py-LC25"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">release</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L26" class="blob-num js-line-number"
+                                                        data-line-number="26"></td>
+                                                    <td id="file-snapshot-py-LC26"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">destroyAllWindows</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L27" class="blob-num js-line-number"
+                                                        data-line-number="27"></td>
+                                                    <td id="file-snapshot-py-LC27"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">break</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L28" class="blob-num js-line-number"
+                                                        data-line-number="28"></td>
+                                                    <td id="file-snapshot-py-LC28"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-snapshot-py-L29" class="blob-num js-line-number"
+                                                        data-line-number="29"></td>
+                                                    <td id="file-snapshot-py-LC29"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <b>Training via images:</b><br><br>
+                <p>The next step is creating the face recognizer . The face recognizer object has functions like
+                    FaceRecognizer.train to train the system to recognize the face of the authorized person
+
+                    by using the various images from the database created earlier.
+
+                    This can be achieved by defining a function that takes the absolute path to the image in the
+                    database as input argument and returns tuple of 2 list, one containing the detected faces and the
+                    other containing the corresponding label for that face.</p>
+                <br>
+                <br>
+
+                <div style="tab-size: 8" id="gist46282237" class="gist">
+                    <div class="gist-file" translate="no">
+                        <div class="gist-data">
+                            <div class="js-gist-file-update-container js-task-list-container file-box">
+                                <div id="file-trainer-py" class="file my-2">
+                                    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+                                        <table class="highlight tab-size js-file-line-container" data-tab-size="8"
+                                            data-paste-markdown-skip="">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="file-trainer-py-L1" class="blob-num js-line-number"
+                                                        data-line-number="1"></td>
+                                                    <td id="file-trainer-py-LC1"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">cv2</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L2" class="blob-num js-line-number"
+                                                        data-line-number="2"></td>
+                                                    <td id="file-trainer-py-LC2"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">os</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L3" class="blob-num js-line-number"
+                                                        data-line-number="3"></td>
+                                                    <td id="file-trainer-py-LC3"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">numpy</span>
+                                                        <span class="pl-k">as</span> <span class="pl-s1">np</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L4" class="blob-num js-line-number"
+                                                        data-line-number="4"></td>
+                                                    <td id="file-trainer-py-LC4"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">from</span> <span class="pl-v">PIL</span> <span
+                                                            class="pl-k">import</span> <span class="pl-v">Image</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L5" class="blob-num js-line-number"
+                                                        data-line-number="5"></td>
+                                                    <td id="file-trainer-py-LC5"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L6" class="blob-num js-line-number"
+                                                        data-line-number="6"></td>
+                                                    <td id="file-trainer-py-LC6"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">recognizer</span><span
+                                                            class="pl-c1">=</span><span class="pl-s1">cv2</span>.<span
+                                                            class="pl-s1">face</span>.<span
+                                                            class="pl-en">createLBPHFaceRecognizer</span>();</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L7" class="blob-num js-line-number"
+                                                        data-line-number="7"></td>
+                                                    <td id="file-trainer-py-LC7"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">path</span> <span class="pl-c1">=</span> <span
+                                                            class="pl-s">'Train'</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L8" class="blob-num js-line-number"
+                                                        data-line-number="8"></td>
+                                                    <td id="file-trainer-py-LC8"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L9" class="blob-num js-line-number"
+                                                        data-line-number="9"></td>
+                                                    <td id="file-trainer-py-LC9"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">def</span> <span
+                                                            class="pl-en">getimage</span>(<span
+                                                            class="pl-s1">path</span>):</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L10" class="blob-num js-line-number"
+                                                        data-line-number="10"></td>
+                                                    <td id="file-trainer-py-LC10"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">imagepaths</span><span
+                                                            class="pl-c1">=</span>[<span class="pl-s1">os</span>.<span
+                                                            class="pl-s1">path</span>.<span
+                                                            class="pl-en">join</span>(<span
+                                                            class="pl-s1">path</span>,<span class="pl-s1">f</span>)
+                                                        <span class="pl-k">for</span> <span class="pl-s1">f</span> <span
+                                                            class="pl-c1">in</span> <span class="pl-s1">os</span>.<span
+                                                            class="pl-en">listdir</span>(<span
+                                                            class="pl-s1">path</span>)]
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L11" class="blob-num js-line-number"
+                                                        data-line-number="11"></td>
+                                                    <td id="file-trainer-py-LC11"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">faces</span><span class="pl-c1">=</span>[]
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L12" class="blob-num js-line-number"
+                                                        data-line-number="12"></td>
+                                                    <td id="file-trainer-py-LC12"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-v">IDs</span><span class="pl-c1">=</span>[]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L13" class="blob-num js-line-number"
+                                                        data-line-number="13"></td>
+                                                    <td id="file-trainer-py-LC13"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span> <span class="pl-s1">imagepath</span>
+                                                        <span class="pl-c1">in</span> <span
+                                                            class="pl-s1">imagepaths</span>:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L14" class="blob-num js-line-number"
+                                                        data-line-number="14"></td>
+                                                    <td id="file-trainer-py-LC14"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">faceimage</span><span
+                                                            class="pl-c1">=</span><span class="pl-v">Image</span>.<span
+                                                            class="pl-en">open</span>(<span
+                                                            class="pl-s1">imagepath</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L15" class="blob-num js-line-number"
+                                                        data-line-number="15"></td>
+                                                    <td id="file-trainer-py-LC15"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">facenp</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">np</span>.<span
+                                                            class="pl-en">array</span>(<span
+                                                            class="pl-s1">faceimage</span>,<span
+                                                            class="pl-s">'uint8'</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L16" class="blob-num js-line-number"
+                                                        data-line-number="16"></td>
+                                                    <td id="file-trainer-py-LC16"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">gray</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">cvtColor</span>(<span
+                                                            class="pl-s1">facenp</span>,<span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">COLOR_BGR2GRAY</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L17" class="blob-num js-line-number"
+                                                        data-line-number="17"></td>
+                                                    <td id="file-trainer-py-LC17"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-v">ID</span><span class="pl-c1">=</span><span
+                                                            class="pl-en">int</span>(<span class="pl-s1">os</span>.<span
+                                                            class="pl-s1">path</span>.<span
+                                                            class="pl-en">split</span>(<span
+                                                            class="pl-s1">imagepath</span>)[<span
+                                                            class="pl-c1">–</span><span class="pl-c1">1</span>].<span
+                                                            class="pl-en">split</span>(<span
+                                                            class="pl-s">'.'</span>)[<span class="pl-c1">1</span>])</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L18" class="blob-num js-line-number"
+                                                        data-line-number="18"></td>
+                                                    <td id="file-trainer-py-LC18"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">faces</span>.<span
+                                                            class="pl-en">append</span>(<span class="pl-s1">gray</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L19" class="blob-num js-line-number"
+                                                        data-line-number="19"></td>
+                                                    <td id="file-trainer-py-LC19"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-en">print</span>(<span class="pl-v">ID</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L20" class="blob-num js-line-number"
+                                                        data-line-number="20"></td>
+                                                    <td id="file-trainer-py-LC20"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-v">IDs</span>.<span
+                                                            class="pl-en">append</span>(<span class="pl-v">ID</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L21" class="blob-num js-line-number"
+                                                        data-line-number="21"></td>
+                                                    <td id="file-trainer-py-LC21"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imshow</span>(<span
+                                                            class="pl-s">"training"</span>,<span
+                                                            class="pl-s1">facenp</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L22" class="blob-num js-line-number"
+                                                        data-line-number="22"></td>
+                                                    <td id="file-trainer-py-LC22"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">waitKey</span>(<span class="pl-c1">100</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L23" class="blob-num js-line-number"
+                                                        data-line-number="23"></td>
+                                                    <td id="file-trainer-py-LC23"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">return</span> <span
+                                                            class="pl-v">IDs</span>,<span class="pl-s1">faces</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L24" class="blob-num js-line-number"
+                                                        data-line-number="24"></td>
+                                                    <td id="file-trainer-py-LC24"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-v">Ids</span>,<span
+                                                            class="pl-s1">faces</span><span class="pl-c1">=</span><span
+                                                            class="pl-en">getimage</span>(<span
+                                                            class="pl-s1">path</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L25" class="blob-num js-line-number"
+                                                        data-line-number="25"></td>
+                                                    <td id="file-trainer-py-LC25"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">recognizer</span>.<span
+                                                            class="pl-en">train</span>(<span
+                                                            class="pl-s1">faces</span>,<span
+                                                            class="pl-s1">np</span>.<span
+                                                            class="pl-en">array</span>(<span class="pl-v">Ids</span>))
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L26" class="blob-num js-line-number"
+                                                        data-line-number="26"></td>
+                                                    <td id="file-trainer-py-LC26"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">recognizer</span>.<span
+                                                            class="pl-en">save</span>(<span class="pl-s">'<span
+                                                                class="skimlinks-unlinked">abcd.yml</span>'</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L27" class="blob-num js-line-number"
+                                                        data-line-number="27"></td>
+                                                    <td id="file-trainer-py-LC27"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">recognizer</span>.<span
+                                                            class="pl-en">load</span>(<span class="pl-s">'<span
+                                                                class="skimlinks-unlinked">abcd.yml</span>'</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-trainer-py-L28" class="blob-num js-line-number"
+                                                        data-line-number="28"></td>
+                                                    <td id="file-trainer-py-LC28"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">destroyAllWindows</span>()</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p></p>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <h1>
+                    Face recognition:
+                </h1>
+                <br>
+                <br>
+
+                <p>Finally, it analyses the detected human face and compare it with images from the database which is
+                    achieved by using some features like the distance between the eyes etc. And if it matches, the
+                    program passes the control over to the microcontroller (here the microcontroller used is Arduino)
+                    which in turn opens the door!</p>
+                <br>
+                <br>
+
+                Recognition and lock control ::
+                <br>
+                <br>
+                <div style="tab-size: 8" id="gist46282478" class="gist">
+                    <div class="gist-file" translate="no">
+                        <div class="gist-data">
+                            <div class="js-gist-file-update-container js-task-list-container file-box">
+                                <div id="file-recoz-servo-py" class="file my-2">
+                                    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+                                        <table class="highlight tab-size js-file-line-container" data-tab-size="8"
+                                            data-paste-markdown-skip="">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L1" class="blob-num js-line-number"
+                                                        data-line-number="1"></td>
+                                                    <td id="file-recoz-servo-py-LC1"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">cv2</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L2" class="blob-num js-line-number"
+                                                        data-line-number="2"></td>
+                                                    <td id="file-recoz-servo-py-LC2"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">numpy</span>
+                                                        <span class="pl-k">as</span> <span class="pl-s1">np</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L3" class="blob-num js-line-number"
+                                                        data-line-number="3"></td>
+                                                    <td id="file-recoz-servo-py-LC3"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">serial</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L4" class="blob-num js-line-number"
+                                                        data-line-number="4"></td>
+                                                    <td id="file-recoz-servo-py-LC4"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">import</span> <span class="pl-s1">time</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L5" class="blob-num js-line-number"
+                                                        data-line-number="5"></td>
+                                                    <td id="file-recoz-servo-py-LC5"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">face_cascade</span> <span
+                                                            class="pl-c1">=</span> <span class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">CascadeClassifier</span>(<span
+                                                            class="pl-s">'<span
+                                                                class="skimlinks-unlinked">haarcascade_frontalface_default.xml</span>'</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L6" class="blob-num js-line-number"
+                                                        data-line-number="6"></td>
+                                                    <td id="file-recoz-servo-py-LC6"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">ser</span> <span class="pl-c1">=</span> <span
+                                                            class="pl-s1">serial</span>.<span
+                                                            class="pl-v">Serial</span>(<span class="pl-s">'COM6'</span>,
+                                                        <span class="pl-c1">9600</span>, <span
+                                                            class="pl-s1">timeout</span><span
+                                                            class="pl-c1">=</span><span class="pl-c1">0</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L7" class="blob-num js-line-number"
+                                                        data-line-number="7"></td>
+                                                    <td id="file-recoz-servo-py-LC7"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">isopen</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">VideoCapture</span>(<span
+                                                            class="pl-c1">0</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L8" class="blob-num js-line-number"
+                                                        data-line-number="8"></td>
+                                                    <td id="file-recoz-servo-py-LC8"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">rec</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-s1">face</span>.<span
+                                                            class="pl-en">createLBPHFaceRecognizer</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L9" class="blob-num js-line-number"
+                                                        data-line-number="9"></td>
+                                                    <td id="file-recoz-servo-py-LC9"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">rec</span>.<span
+                                                            class="pl-en">load</span>(<span class="pl-s">'<span
+                                                                class="skimlinks-unlinked">pqrs.yml</span>'</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L10" class="blob-num js-line-number"
+                                                        data-line-number="10"></td>
+                                                    <td id="file-recoz-servo-py-LC10"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">time</span><span class="pl-c1">=</span><span
+                                                            class="pl-c1">0</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L11" class="blob-num js-line-number"
+                                                        data-line-number="11"></td>
+                                                    <td id="file-recoz-servo-py-LC11"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">count</span><span class="pl-c1">=</span><span
+                                                            class="pl-c1">0</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L12" class="blob-num js-line-number"
+                                                        data-line-number="12"></td>
+                                                    <td id="file-recoz-servo-py-LC12"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-s1">id</span><span class="pl-c1">=</span><span
+                                                            class="pl-c1">0</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L13" class="blob-num js-line-number"
+                                                        data-line-number="13"></td>
+                                                    <td id="file-recoz-servo-py-LC13"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">while</span>(<span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">isOpened</span>()):</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L14" class="blob-num js-line-number"
+                                                        data-line-number="14"></td>
+                                                    <td id="file-recoz-servo-py-LC14"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span> <span class="pl-s1">time</span>
+                                                        <span class="pl-c1">in</span> <span
+                                                            class="pl-en">range</span>(<span
+                                                            class="pl-c1">0</span>,<span class="pl-c1">30</span>):
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L15" class="blob-num js-line-number"
+                                                        data-line-number="15"></td>
+                                                    <td id="file-recoz-servo-py-LC15"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">ret</span>, <span
+                                                            class="pl-s1">img</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">read</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L16" class="blob-num js-line-number"
+                                                        data-line-number="16"></td>
+                                                    <td id="file-recoz-servo-py-LC16"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L17" class="blob-num js-line-number"
+                                                        data-line-number="17"></td>
+                                                    <td id="file-recoz-servo-py-LC17"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">gray</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">cvtColor</span>(<span
+                                                            class="pl-s1">img</span>,<span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-v">COLOR_BGR2GRAY</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L18" class="blob-num js-line-number"
+                                                        data-line-number="18"></td>
+                                                    <td id="file-recoz-servo-py-LC18"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">faces</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">face_cascade</span>.<span
+                                                            class="pl-en">detectMultiScale</span>(<span
+                                                            class="pl-s1">gray</span>,<span
+                                                            class="pl-c1">1.3</span>,<span class="pl-c1">5</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L19" class="blob-num js-line-number"
+                                                        data-line-number="19"></td>
+                                                    <td id="file-recoz-servo-py-LC19"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span>(<span class="pl-s1">x</span>,<span
+                                                            class="pl-s1">y</span>,<span class="pl-s1">w</span>,<span
+                                                            class="pl-s1">h</span>) <span class="pl-c1">in</span> <span
+                                                            class="pl-s1">faces</span>:</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L20" class="blob-num js-line-number"
+                                                        data-line-number="20"></td>
+                                                    <td id="file-recoz-servo-py-LC20"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imshow</span>(<span
+                                                            class="pl-s">'img'</span>,<span class="pl-s1">img</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L21" class="blob-num js-line-number"
+                                                        data-line-number="21"></td>
+                                                    <td id="file-recoz-servo-py-LC21"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">id</span>,<span class="pl-s1">conf</span><span
+                                                            class="pl-c1">=</span><span class="pl-s1">rec</span>.<span
+                                                            class="pl-en">predict</span>(<span
+                                                            class="pl-s1">gray</span>[<span class="pl-s1">y</span>:<span
+                                                            class="pl-s1">y</span><span class="pl-c1">+</span><span
+                                                            class="pl-s1">h</span>,<span class="pl-s1">x</span>:<span
+                                                            class="pl-s1">x</span><span class="pl-c1">+</span><span
+                                                            class="pl-s1">w</span>])</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L22" class="blob-num js-line-number"
+                                                        data-line-number="22"></td>
+                                                    <td id="file-recoz-servo-py-LC22"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-en">print</span> (<span class="pl-s1">id</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L23" class="blob-num js-line-number"
+                                                        data-line-number="23"></td>
+                                                    <td id="file-recoz-servo-py-LC23"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">if</span> <span class="pl-s1">id</span><span
+                                                            class="pl-c1">==</span><span class="pl-c1">1</span>:</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L24" class="blob-num js-line-number"
+                                                        data-line-number="24"></td>
+                                                    <td id="file-recoz-servo-py-LC24"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">rectangle</span>(<span
+                                                            class="pl-s1">img</span>,(<span class="pl-s1">x</span>,<span
+                                                            class="pl-s1">y</span>),(<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>,<span
+                                                            class="pl-s1">y</span><span class="pl-c1">+</span><span
+                                                            class="pl-s1">h</span>),(<span class="pl-c1">0</span>,<span
+                                                            class="pl-c1">255</span>,<span class="pl-c1">0</span>),<span
+                                                            class="pl-c1">2</span>)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L25" class="blob-num js-line-number"
+                                                        data-line-number="25"></td>
+                                                    <td id="file-recoz-servo-py-LC25"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">roi_gray</span> <span class="pl-c1">=</span>
+                                                        <span class="pl-s1">gray</span>[<span
+                                                            class="pl-s1">y</span>:<span class="pl-s1">y</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">h</span>,<span
+                                                            class="pl-s1">x</span>:<span class="pl-s1">x</span><span
+                                                            class="pl-c1">+</span><span class="pl-s1">w</span>]
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L26" class="blob-num js-line-number"
+                                                        data-line-number="26"></td>
+                                                    <td id="file-recoz-servo-py-LC26"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">count</span><span class="pl-c1">=</span><span
+                                                            class="pl-s1">count</span><span class="pl-c1">+</span><span
+                                                            class="pl-c1">0.035</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L27" class="blob-num js-line-number"
+                                                        data-line-number="27"></td>
+                                                    <td id="file-recoz-servo-py-LC27"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">if</span> <span class="pl-s1">count</span><span
+                                                            class="pl-c1">&gt;=</span><span class="pl-c1">1</span> :
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L28" class="blob-num js-line-number"
+                                                        data-line-number="28"></td>
+                                                    <td id="file-recoz-servo-py-LC28"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">ser</span>.<span
+                                                            class="pl-en">write</span>(<span class="pl-s">b'v'</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L29" class="blob-num js-line-number"
+                                                        data-line-number="29"></td>
+                                                    <td id="file-recoz-servo-py-LC29"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">time</span>.<span
+                                                            class="pl-en">sleep</span>(<span class="pl-c1">7</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L30" class="blob-num js-line-number"
+                                                        data-line-number="30"></td>
+                                                    <td id="file-recoz-servo-py-LC30"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L31" class="blob-num js-line-number"
+                                                        data-line-number="31"></td>
+                                                    <td id="file-recoz-servo-py-LC31"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">imshow</span>(<span
+                                                            class="pl-s">'img'</span>,<span class="pl-s1">img</span>)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L32" class="blob-num js-line-number"
+                                                        data-line-number="32"></td>
+                                                    <td id="file-recoz-servo-py-LC32"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">count</span><span class="pl-c1">=</span><span
+                                                            class="pl-c1">0</span> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L33" class="blob-num js-line-number"
+                                                        data-line-number="33"></td>
+                                                    <td id="file-recoz-servo-py-LC33"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L34" class="blob-num js-line-number"
+                                                        data-line-number="34"></td>
+                                                    <td id="file-recoz-servo-py-LC34"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">if</span> <span class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">waitKey</span>(<span class="pl-c1">10</span>)
+                                                        <span class="pl-c1">&amp;</span> <span class="pl-c1">0xFF</span>
+                                                        <span class="pl-c1">==</span> <span
+                                                            class="pl-en">ord</span>(<span class="pl-s">'q'</span>):
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L35" class="blob-num js-line-number"
+                                                        data-line-number="35"></td>
+                                                    <td id="file-recoz-servo-py-LC35"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">isopen</span>.<span
+                                                            class="pl-en">release</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L36" class="blob-num js-line-number"
+                                                        data-line-number="36"></td>
+                                                    <td id="file-recoz-servo-py-LC36"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-s1">cv2</span>.<span
+                                                            class="pl-en">destroyAllWindows</span>()</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-recoz-servo-py-L37" class="blob-num js-line-number"
+                                                        data-line-number="37"></td>
+                                                    <td id="file-recoz-servo-py-LC37"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <p>Lock control on arduino ::</p>
+                <br>
+                <br>
+
+                <div style="tab-size: 8" id="gist46282081" class="gist">
+                    <div class="gist-file" translate="no">
+                        <div class="gist-data">
+                            <div class="js-gist-file-update-container js-task-list-container file-box">
+                                <div id="file-lock-ino" class="file my-2">
+                                    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-c  ">
+                                        <table class="highlight tab-size js-file-line-container" data-tab-size="8"
+                                            data-paste-markdown-skip="">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="file-lock-ino-L1" class="blob-num js-line-number"
+                                                        data-line-number="1"></td>
+                                                    <td id="file-lock-ino-LC1"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">int</span> incomingByte = <span
+                                                            class="pl-c1">0</span>;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L2" class="blob-num js-line-number"
+                                                        data-line-number="2"></td>
+                                                    <td id="file-lock-ino-LC2"
+                                                        class="blob-code blob-code-inner js-file-line">#<span
+                                                            class="pl-k">include</span> <span class="pl-s"><span
+                                                                class="pl-pds">&lt;</span>Servo.h<span
+                                                                class="pl-pds">&gt;</span></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L3" class="blob-num js-line-number"
+                                                        data-line-number="3"></td>
+                                                    <td id="file-lock-ino-LC3"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L4" class="blob-num js-line-number"
+                                                        data-line-number="4"></td>
+                                                    <td id="file-lock-ino-LC4"
+                                                        class="blob-code blob-code-inner js-file-line">Servo myservo;
+                                                        <span class="pl-c"><span class="pl-c">//</span> create servo
+                                                            object to control a servo</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L5" class="blob-num js-line-number"
+                                                        data-line-number="5"></td>
+                                                    <td id="file-lock-ino-LC5"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-c"><span class="pl-c">//</span> twelve servo
+                                                            objects can be created on most boards</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L6" class="blob-num js-line-number"
+                                                        data-line-number="6"></td>
+                                                    <td id="file-lock-ino-LC6"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L7" class="blob-num js-line-number"
+                                                        data-line-number="7"></td>
+                                                    <td id="file-lock-ino-LC7"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">int</span> pos = <span class="pl-c1">0</span>;
+                                                        <span class="pl-c"><span class="pl-c">//</span> variable to
+                                                            store the servo position</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L8" class="blob-num js-line-number"
+                                                        data-line-number="8"></td>
+                                                    <td id="file-lock-ino-LC8"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L9" class="blob-num js-line-number"
+                                                        data-line-number="9"></td>
+                                                    <td id="file-lock-ino-LC9"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L10" class="blob-num js-line-number"
+                                                        data-line-number="10"></td>
+                                                    <td id="file-lock-ino-LC10"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">void</span> <span class="pl-en">setup</span>(){
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L11" class="blob-num js-line-number"
+                                                        data-line-number="11"></td>
+                                                    <td id="file-lock-ino-LC11"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-c"><span class="pl-c">//</span> Open serial
+                                                            connection.</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L12" class="blob-num js-line-number"
+                                                        data-line-number="12"></td>
+                                                    <td id="file-lock-ino-LC12"
+                                                        class="blob-code blob-code-inner js-file-line">Serial.<span
+                                                            class="pl-c1">begin</span>(<span class="pl-c1">9600</span>);
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L13" class="blob-num js-line-number"
+                                                        data-line-number="13"></td>
+                                                    <td id="file-lock-ino-LC13"
+                                                        class="blob-code blob-code-inner js-file-line"> myservo.<span
+                                                            class="pl-c1">attach</span>(<span class="pl-c1">9</span>);
+                                                        <span class="pl-c"><span class="pl-c">//</span> attaches the
+                                                            servo on pin 9 to the servo object </span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L14" class="blob-num js-line-number"
+                                                        data-line-number="14"></td>
+                                                    <td id="file-lock-ino-LC14"
+                                                        class="blob-code blob-code-inner js-file-line">}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L15" class="blob-num js-line-number"
+                                                        data-line-number="15"></td>
+                                                    <td id="file-lock-ino-LC15"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L16" class="blob-num js-line-number"
+                                                        data-line-number="16"></td>
+                                                    <td id="file-lock-ino-LC16"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">void</span> <span class="pl-en">loop</span>(){
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L17" class="blob-num js-line-number"
+                                                        data-line-number="17"></td>
+                                                    <td id="file-lock-ino-LC17"
+                                                        class="blob-code blob-code-inner js-file-line"><span
+                                                            class="pl-k">if</span> (Serial.<span
+                                                            class="pl-c1">available</span>() &gt; <span
+                                                            class="pl-c1">0</span>) {</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L18" class="blob-num js-line-number"
+                                                        data-line-number="18"></td>
+                                                    <td id="file-lock-ino-LC18"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c"><span class="pl-c">//</span> read the incoming
+                                                            byte:</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L19" class="blob-num js-line-number"
+                                                        data-line-number="19"></td>
+                                                    <td id="file-lock-ino-LC19"
+                                                        class="blob-code blob-code-inner js-file-line"> incomingByte =
+                                                        Serial.<span class="pl-c1">read</span>();</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L20" class="blob-num js-line-number"
+                                                        data-line-number="20"></td>
+                                                    <td id="file-lock-ino-LC20"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L21" class="blob-num js-line-number"
+                                                        data-line-number="21"></td>
+                                                    <td id="file-lock-ino-LC21"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c"><span class="pl-c">//</span> say what you
+                                                            got:</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L22" class="blob-num js-line-number"
+                                                        data-line-number="22"></td>
+                                                    <td id="file-lock-ino-LC22"
+                                                        class="blob-code blob-code-inner js-file-line"> Serial.<span
+                                                            class="pl-c1">print</span>(<span class="pl-s"><span
+                                                                class="pl-pds">"</span>I got: <span
+                                                                class="pl-pds">"</span></span>); <span
+                                                            class="pl-c"><span class="pl-c">//</span> ASCII printable
+                                                            characters</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L23" class="blob-num js-line-number"
+                                                        data-line-number="23"></td>
+                                                    <td id="file-lock-ino-LC23"
+                                                        class="blob-code blob-code-inner js-file-line"> Serial.<span
+                                                            class="pl-c1">println</span>(incomingByte, DEC);</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L24" class="blob-num js-line-number"
+                                                        data-line-number="24"></td>
+                                                    <td id="file-lock-ino-LC24"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span> (pos = <span class="pl-c1">0</span>;
+                                                        pos &lt;= <span class="pl-c1">90</span>; pos += <span
+                                                            class="pl-c1">1</span>) { <span class="pl-c"><span
+                                                                class="pl-c">//</span> goes from 0 degrees to 180
+                                                            degrees</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L25" class="blob-num js-line-number"
+                                                        data-line-number="25"></td>
+                                                    <td id="file-lock-ino-LC25"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c"><span class="pl-c">//</span> in steps of 1
+                                                            degree</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L26" class="blob-num js-line-number"
+                                                        data-line-number="26"></td>
+                                                    <td id="file-lock-ino-LC26"
+                                                        class="blob-code blob-code-inner js-file-line"> myservo.<span
+                                                            class="pl-c1">write</span>(pos); <span class="pl-c"><span
+                                                                class="pl-c">//</span> tell servo to go to position in
+                                                            variable 'pos'</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L27" class="blob-num js-line-number"
+                                                        data-line-number="27"></td>
+                                                    <td id="file-lock-ino-LC27"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c1">delay</span>(<span class="pl-c1">15</span>);
+                                                        <span class="pl-c"><span class="pl-c">//</span> waits 15ms for
+                                                            the servo to reach the position</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L28" class="blob-num js-line-number"
+                                                        data-line-number="28"></td>
+                                                    <td id="file-lock-ino-LC28"
+                                                        class="blob-code blob-code-inner js-file-line"> }</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L29" class="blob-num js-line-number"
+                                                        data-line-number="29"></td>
+                                                    <td id="file-lock-ino-LC29"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L30" class="blob-num js-line-number"
+                                                        data-line-number="30"></td>
+                                                    <td id="file-lock-ino-LC30"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span> (pos = <span
+                                                            class="pl-c1">90</span>; pos &gt;= <span
+                                                            class="pl-c1">0</span>; pos -= <span class="pl-c1">1</span>)
+                                                        { <span class="pl-c"><span class="pl-c">//</span> goes from 180
+                                                            degrees to 0 degrees</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L31" class="blob-num js-line-number"
+                                                        data-line-number="31"></td>
+                                                    <td id="file-lock-ino-LC31"
+                                                        class="blob-code blob-code-inner js-file-line"> myservo.<span
+                                                            class="pl-c1">write</span>(pos); <span class="pl-c"><span
+                                                                class="pl-c">//</span> tell servo to go to position in
+                                                            variable 'pos'</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L32" class="blob-num js-line-number"
+                                                        data-line-number="32"></td>
+                                                    <td id="file-lock-ino-LC32"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c1">delay</span>(<span class="pl-c1">15</span>);
+                                                        <span class="pl-c"><span class="pl-c">//</span> waits 15ms for
+                                                            the servo to reach the position</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L33" class="blob-num js-line-number"
+                                                        data-line-number="33"></td>
+                                                    <td id="file-lock-ino-LC33"
+                                                        class="blob-code blob-code-inner js-file-line"> }</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L34" class="blob-num js-line-number"
+                                                        data-line-number="34"></td>
+                                                    <td id="file-lock-ino-LC34"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c1">delay</span>(<span class="pl-c1">5000</span>);
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L35" class="blob-num js-line-number"
+                                                        data-line-number="35"></td>
+                                                    <td id="file-lock-ino-LC35"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-k">for</span> (pos = <span class="pl-c1">0</span>;
+                                                        pos &lt;= <span class="pl-c1">90</span>; pos += <span
+                                                            class="pl-c1">1</span>) { <span class="pl-c"><span
+                                                                class="pl-c">//</span> goes from 0 degrees to 180
+                                                            degrees</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L36" class="blob-num js-line-number"
+                                                        data-line-number="36"></td>
+                                                    <td id="file-lock-ino-LC36"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c"><span class="pl-c">//</span> in steps of 1
+                                                            degree</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L37" class="blob-num js-line-number"
+                                                        data-line-number="37"></td>
+                                                    <td id="file-lock-ino-LC37"
+                                                        class="blob-code blob-code-inner js-file-line"> myservo.<span
+                                                            class="pl-c1">write</span>(pos); <span class="pl-c"><span
+                                                                class="pl-c">//</span> tell servo to go to position in
+                                                            variable 'pos'</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L38" class="blob-num js-line-number"
+                                                        data-line-number="38"></td>
+                                                    <td id="file-lock-ino-LC38"
+                                                        class="blob-code blob-code-inner js-file-line"> <span
+                                                            class="pl-c1">delay</span>(<span class="pl-c1">15</span>);
+                                                        <span class="pl-c"><span class="pl-c">//</span> waits 15ms for
+                                                            the servo to reach the position</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L39" class="blob-num js-line-number"
+                                                        data-line-number="39"></td>
+                                                    <td id="file-lock-ino-LC39"
+                                                        class="blob-code blob-code-inner js-file-line"> }</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L40" class="blob-num js-line-number"
+                                                        data-line-number="40"></td>
+                                                    <td id="file-lock-ino-LC40"
+                                                        class="blob-code blob-code-inner js-file-line">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L41" class="blob-num js-line-number"
+                                                        data-line-number="41"></td>
+                                                    <td id="file-lock-ino-LC41"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L42" class="blob-num js-line-number"
+                                                        data-line-number="42"></td>
+                                                    <td id="file-lock-ino-LC42"
+                                                        class="blob-code blob-code-inner js-file-line">}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L43" class="blob-num js-line-number"
+                                                        data-line-number="43"></td>
+                                                    <td id="file-lock-ino-LC43"
+                                                        class="blob-code blob-code-inner js-file-line"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="file-lock-ino-L44" class="blob-num js-line-number"
+                                                        data-line-number="44"></td>
+                                                    <td id="file-lock-ino-LC44"
+                                                        class="blob-code blob-code-inner js-file-line">}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <p></p>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+
+                <img src = "/blog-pics/coding/face-recog/face2.jpg">
+                <br>
+                <br>
+
+                <h1>
+                    Reference
+                </h1><br>
+
+                <a href = "http://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html#id27">http://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html#id27</a>
+
+                <br>
+                <br>
+
+                <h1>Team Members</h1>
+
+                <br />
+                <!-- ---------------------- This is optional ---------------------- -->
+                <ul>
+                    <li>Tejas K. AtreyaS</li>
+                    <li>Yashwanth Kumar</li>
+                    <li>Nitesh Jindal</li>
+                    <li>Tarun Kumar Yadav</li>
+                </ul><br>
+                MENTORS: Saumitra  Sharma , Abhishek Anand , Vamshi Krishna Reddy
+                <br />
+                <br />
+
+                Thank You!
+
+
+
+
+
+
+
+
+                <!-- ------------------------------------------------------------ -->
+            </article>
+        </div>
+        <span class="divider">
+            <span class="divider-bar"></span>
+        </span>
+
+        <!-- ----------------------aside------------------------ -->
+        <aside class="landing-sidebar">
+            <section class="blogcontainer">
+              <h2>Check out our other posts</h2>
+              <br />
+              <!-- background images are added using css nth child -->
+              <main class="page-content">
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">FACE RECOGNITION Door Lock</h2>
+                    <p class="copy">
+                      Are you fed up of losing your room keys? Or are you fed up of remembering which key opens which lock? To solve these problems, we present...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">LDR Dot Matrix</h2>
+                    <p class="copy">
+                      In the modern world which is full of advertisement what is better than to provide the world with a cheaper and efficient way of advertisement. What is more impressive...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">You Can't Beat A Healthy Heart</h2>
+                    <p class="copy">
+                      PARTS OF HEART WAVE : Electrocardiography (ECG or EKG) is the method of recording the electrical activity of heart over a period of...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">NIGAHEIN</h2>
+                    <p class="copy">
+                      A Pupil tracking based room automation system
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">PHONE DETECTOR</h2>
+                    <p class="copy">
+                      March 24,2019. Current working model About: The basic principle behind the cell phone detector circuit is to detect the RF signals. Illegal use of cell phones in places like exam halls, confidential rooms, petrol bunks...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">SMART FARM- ELECTRONICS CLUB, IIT GUWAHATI</h2>
+                    <p class="copy">Just think, life of a hardworking farmer can be made lot more easier and comfortable if he could control his whole farm sitting at his home. So we have come...</p>
+                    <a href="/blog-blogs/sidebar/uncat-smartfarm.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">WiFi Jammer – Electronics Club IITG</h2>
+                    <p class="copy">NODE MCU What are Jammers? A jammer is a device which can prevent the use of a particular radio frequency by bombarding it with random noise, or in other words, jamming it...</p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">ELECTRONIC PIANO – Electronics Club IITG</h2>
+                    <p class="copy">Have you ever experienced that when you are in off-mood, someone plays music around you and your mind gets refreshed ? And had a thought to play your own tunes whenever you...</p>
+                    <a href="/blog-blogs/sidebar/uncat-piano.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">V-Motion</h2>
+                    <p class="copy">
+                      "Virtual music player which plays music according to the movements of hands.It is similar to playing a tune on a keyboard or a guitar where you need to strike different chords.To ease...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">Laser communication System – Electronics Club IITG</h2>
+                    <p class="copy">
+                      From where I sit, the future looks very bright for laser communicationsBadri Younes, NASA's deputy associate administrator ...
+                    </p>
+                    <a href="/blog-blogs/sidebar/uncat-laser.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">RTL-SDR application (Weather satellite data)-Electronics Club IITG</h2>
+                    <p class="copy">
+                      What is RTL-SDR? Ever wondered how Wi-Fi, Bluetooth, GSM(Mobile communication & Internet), GPS, Radio, DTH, Satellites work. Well they do so by the usage of electromagnetic...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+        
+              </main>
+            </section>
+        </aside>
+    </section>
+
+    <!-- ----------------------------footer---------------------------------- -->
+    <section class="footer" data-aos="fade-up" data-aos-duration="500">
+        <div class="findus"><h2>Find Us</h2></div>
+        <!-- ---------------------social icons start--------------------- -->
+  
+        <div class="foot-socials-container">
+          <div class="facebook footlogo">
+            <a href="https://www.facebook.com/electronics.iitg" target="_blank">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="facebook-f"
+                class="svg-inline--fa fa-facebook-f fa-w-10"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 320 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="youtubelogo footlogo">
+            <a
+              href="https://www.youtube.com/channel/UClPWjFXGdtjKYjZvulnUViw"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="youtube"
+                class="svg-inline--fa fa-youtube fa-w-18"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="instagram footlogo">
+            <a
+              href="https://www.instagram.com/electronicsclubiitg/"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="instagram"
+                class="svg-inline--fa fa-instagram fa-w-14"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- /* ------------------------------------form start------------------------------- */ -->
+        <form
+          id="contact-form"
+          method="post"
+          action="form-handler.php"
+          target="_blank"
+        >
+          <div>
+            <h3>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="far"
+                data-icon="envelope"
+                class="svg-inline--fa fa-envelope fa-w-16"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="#ddd"
+                  d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
+                ></path>
+              </svg>
+              Contact Us
+            </h3>
+            <br />
+            <p>
+              For any doubts/queries, feel free to contact us at
+              <span>
+                <a
+                  href="mailto:electronicsclub@iitg.ac.in"
+                  style="text-decoration: none; color: #f15925"
+                >
+                  electronicsclub@iitg.ac.in</a
+                >
+              </span>
+              OR drop a message below:
+            </p>
+          </div>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="Name (required)"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email Address (required)"
+            required
+          />
+  
+          <textarea
+            name="message"
+            class="form-control"
+            placeholder="Message (required)"
+            required
+          ></textarea>
+          <button type="submit" class="form-control-submit" value="Submit">
+            Submit
+          </button>
+        </form>
+  
+        <!-- -----------------------------------footer-footer------------------ -->
+        <div class="footer-footer">
+          <div class="techboard">
+            <a
+              href="https://iitg.ac.in/stud/gymkhana/technical/index.html"
+              target="_blank"
+            >
+              <img src="/techincal board.svg" alt="Technical Board,IITG" />
+            </a>
+          </div>
+          <div class="Rahul">Developed by Rahul Agrawal</div>
+          <div class="Kritika">Designed by Kritika Gupta</div>
+          <!-- techboard and made by and therecontacts mostly iitgwebmail id -->
+        </div>
+      </section>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            // duration: 1000,
+            // delay: 3,
+            // offset: 200,
+            // mirror: true
+        });
+    </script>
+</body>
+
+</html>

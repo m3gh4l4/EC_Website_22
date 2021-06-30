@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Coding | V-Motion</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <style>
+          @import url(/style.css);
+          @font-face {
+            font-family: msjh;
+            src: url(/fonts/msjh_0.ttf);
+            font-style: normal;
+          }
+          @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+          body {
+            color: #ddd;
+            font-family: "msjh";
+          }
+          .landing-container {
+            display: grid;
+            grid-template-columns: 3fr auto 1fr;
+    
+            position: sticky;
+            top: 0px;
+            /* border: 5px solid green; */
+            margin: 5rem auto;
+          }
+          .landing-main {
+            margin: 5px 2rem;
+    
+            color: #ddd;
+          }
+          /* main paras ubuntu font  */
+          span[class="divider"] {
+            justify-self: center;
+            display: inline-block;
+            position: sticky;
+            top: 0px;
+            width: 0;
+            height: 100vh;
+          }
+          .divider .divider-bar {
+            display: inline-block;
+            border-right: 2px solid rgb(4, 15, 67);
+            /* border-right: 2px solid rgb(28, 28, 184, 0.4); */
+            border-radius: 1px;
+            position: relative;
+            top: 20vh;
+            height: 60vh;
+          }
+          .landing-sidebar {
+            /* margin: 5rem auto; */
+            height: 100vh;
+            position: sticky;
+            top: 0px;
+            overflow-y: scroll;
+          }
+          .landing-sidebar::-webkit-scrollbar {
+            /* width: 1rem; */
+            border: none;
+            width: 0px; /*can add scroll bar for blog section but i have removed it*/
+          }
+          .landing-sidebar::-webkit-scrollbar-track {
+            /* color: tomato; */
+            /* color: #ddd; */
+            background-color: rgb(4, 15, 67, 0.7);
+    
+            /* background-color: transparent; */
+            /* box-shadow: inset 0px 0px 2px; */
+            border-radius: 5px;
+          }
+          .landing-sidebar::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #f15925;
+          }
+          .blogcontainer {
+            /* background-color: blueviolet; */
+            display: grid;
+            place-items: center;
+            text-align: center;
+            /* border: 2px dashed orange; */
+          }
+          .blogcontainer > h2 {
+            color: #f15925;
+            font-weight: 400;
+            font-size: 1.3rem;
+            width: 60%;
+            margin: 1rem;
+            /* margin-bottom: 3rem; */
+            text-align: center;
+            justify-self: center;
+          }
+          .page-content {
+            display: grid;
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            grid-template-columns: 1fr;
+          }
+          .card {
+            max-height: 300px;
+            justify-self: center;
+            max-width: 250px;
+          }
+          .copy {
+            line-height: 1.1rem;
+            font-size: 1rem;
+          }
+          .card .content {
+            font-size: 1rem;
+          }
+          @media screen and (max-width: 1000px) {
+            .card .title {
+              font-size: 1.2rem;
+              font-weight: 550;
+              line-height: 1;
+            }
+            .card .content {
+              padding: 0;
+            }
+          }
+          @media screen and (max-width: 700px) {
+            span[class="divider"],
+            .landing-sidebar {
+              display: none;
+            }
+            .landing-container {
+              grid-template-columns: 1fr;
+            }
+          }
+        </style>
+</head>
+
+<body>
+    <!-- ---------------------------menubar---------------------------------- -->
+    <header>
+        <div class="logo">
+          <a href="/index.html">
+            <img src="/elecclublogo.svg" alt="Logo" />
+          </a>
+        </div>
+  
+        <h1 class="logotext"><a href="/index.html"> Electronics Club</a></h1>
+  
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <nav>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li>
+              <a href="#">Resources</a>
+              <ul>
+                <li><a href="#" style="margin-left: 3.75rem;">Digital</a></li>
+                <li><a href="#" style="margin-left: 3.75rem;">Analog</a></li>
+                <li><a href="/resources-microcontroller.html" style="margin-left: 2rem;">Microcontroller</a></li>
+                <li><a href="#">Computer Vision & AI</a></li>
+                <li><a href="#" style="margin-left: 5rem;">IoT</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/blog-home.html">Blogs</a>
+              <ul>
+                <li><a href="/blog-blogs/blog-uncategorised.html" style="margin-left: 0.75rem;">Uncategorised</a></li>
+                <li><a href="/blog-blogs/blog-core-electronics.html">Core Electronics</a></li>
+                <li><a href="/blog-blogs/blog-coding.html" style="margin-left: 2.55rem;">Coding</a></li>
+                <li><a href="/blog-blogs/blog-networking.html" style="margin-left: 1.35rem;">Networking</a></li>
+                <li><a href="/blog-blogs/blog-hacking.html" style="margin-left: 2.25rem;">Hacking</a></li>
+                
+              </ul>
+            </li>
+            <li><a href="/team.html">Team</a></li>
+            <li><a href="/alumni.html">Alumni</a></li>
+          </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span class="navicon"></span>
+        </label>
+    </header>
+
+
+    <section class="landing-container">
+        <!-- ---------------------------------main---------------------------- -->
+        <div class="landing-main">
+
+            <article style="margin: 40px;">
+                <h1>V-Motion</h1>
+                <br /><br /><br />
+
+                <!-- ---------------------- This is optional ---------------------- -->
+
+                <div style="display:flex">
+                    <div style="margin-right: 40px;transform:translate(0px, 60px);">
+                        “Virtual music player which plays music according to the movements of hands.It is similar to
+                        playing a tune on a keyboard or a guitar where you need to strike different chords.To ease human
+                        efforts and demonstrate the power of computer vision, we simply generate music by motion of
+                        hands in real-time using pre-set tunes at various angles. “
+                    </div>
+                    <div>
+                        <img src="/blog-pics/coding/v-motion/v1.jpg"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 300px;">
+                    </div>
+                </div>
+                <!-- -------------------------------------------------------------- -->
+                <br />
+
+                <h1>KEY LEARNING-</h1><br><br>
+                <ul>
+                    <li>Depth camera</li>
+                    <li>Image segmentation, noise blurring, finding contours, convex hull detection, finding centroid
+                    </li>
+                    <li> Concept of threading</li>
+                    <li>Using OpenCV and Pygame libraries</li>
+                </ul><br><br>
+
+                <h1>Things used in this project</h1><br><br>
+                <ul>
+                    <li>Intel Realsense Camera</li>
+                    <li>Opencv
+                    </li>
+                    <li>Python</li>
+                    <li>Pygame</li>
+                </ul><br><br>
+
+                <h1>Story</h1><br><br>
+                <p>This project was done with this fantastic “Open Source Computer Vision Library”, the OpenCV. In this
+                    project, we have focused on depth images processing, Python2 and music player libraries pygame.
+                    OpenCV was designed for computational efficiency and with a strong focus on real-time applications.
+                    So, it’s perfect for real-time human detection and segmentation using a camera.</p><br><br>
+
+
+                <h1>3 phases</h1><br><br>
+                <p>To complete the project, V-Motion, we have worked on three different phases-</p><br><br>
+                <ul>
+                    <li>Human detection and data gathering using depth camera</li>
+                    <li>Depth image processing
+                    </li>
+                    <li>Integrating music with real time human movement.</li>
+                </ul><br><br>
+
+                <h1>Installation</h1><br><br>
+                <ul>
+                    <li>Install pyrealsense2 from <a href="https://pypi.org/project/pyrealsense2/">here</a></li>
+                    <li>install opencv from <a href="https://pypi.org/project/opencv-python/">here</a>
+                    </li>
+                </ul><br><br>
+
+                <h1>Working</h1><br><br>
+                <b>Step1</b><br><br>
+                <p>Interfacing pyrealsense camera with local machine(laptop).To check if it works fine or not, Run the
+                    following code-<br>
+                    Run the following code-</p><br><br>
+                <pre
+                    class="wp-block-preformatted">import pyrealsense2 as rs <br>pipe = rs.pipeline() <br>profile = <span class="skimlinks-unlinked">pipe.start</span>() <br>try:   <br>    for i in range(0, 100):     <br>        frames = pipe.wait_for_frames()     <br>        for f in frames:       <br>            print(f.profile) <br>finally:     <br>    <span class="skimlinks-unlinked">pipe.stop</span>() </pre>
+
+                <br />
+                <br>
+                <b>Step2</b><br><br>
+                <!-- ---------------------- This is optional ---------------------- -->
+
+                <div style="display:flex">
+                    <div style="margin-right: 80px;transform:translate(0px, 30px);">
+                        <p>processing the image feed from depth camera.The depth camera segments the human by discarding the background after certain clipping distance.Then apply noise blurring and image smoothing to remove noise from the raw input of depth camera. Next we use convex hull detection and find contours method to extract human contours from the image.After that, moments function is used to find the centroid of the human figure. Then, we detect the palm/fist of the person which serves as an indicator of the tune to play. The angle of the hands from the centroid serves as a criterion to determine the music to be played.</p>
+                    </div>
+                    <div>
+                        <img src="/blog-pics/coding/v-motion/v2.png"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 200px;">
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <b>Step3</b><br><br>
+                <p>The masked image was divided into eight parts radially and corresponding to the different parts, non-identical musical tunes were setup. Whenever the extreme left or extreme right (palm) intersected the divided regions, the music which tallied with the region got played in the background. Since the algorithm was very responsive and played the tunes for a numerous number of times for a single detection. So we had to apply a locking mechanism that would only allow the tune to be played once disallowing the unwanted consecutive tunes. If we want to play a same tune twice then it has to be alternate i.e. the first tune should be followed by a different tune and then the desired tune will be played again. We can consider the A to be our desired tune then this should be the sequence of the music where B is any other tune different from A.</p><br><br>
+
+                <b>Step4</b><br><br>
+                <p>In order to aid the visualisation of the beats of the music we blended the masked video of the human with a video of standard beat visualiser. This is the code snippet below which we used as a reference.</p><br><br>
+                <div class="wp-block-syntaxhighlighter-code "><div><div id="highlighter_720385" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain"># Load two images</code></div><div class="line number2 index1 alt1"><code class="plain plain">img1 = cv2.imread('messi5.jpg')</code></div><div class="line number3 index2 alt2"><code class="plain plain">img2 = cv2.imread('opencv-logo.png')</code></div><div class="line number4 index3 alt1"><code class="plain plain"># I want to put logo on top-left corner, So I create a ROI</code></div><div class="line number5 index4 alt2"><code class="plain plain">rows,cols,channels = img2.shape</code></div><div class="line number6 index5 alt1"><code class="plain plain">roi = img1[0:rows, 0:cols ]</code></div><div class="line number7 index6 alt2"><code class="plain plain"># Now create a mask of logo and create its inverse mask also</code></div><div class="line number8 index7 alt1"><code class="plain plain">img2gray = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)</code></div><div class="line number9 index8 alt2"><code class="plain plain">ret, mask = cv2.threshold(img2gray, 10, 255, cv2.THRESH_BINARY)</code></div><div class="line number10 index9 alt1"><code class="plain plain">mask_inv = cv2.bitwise_not(mask)</code></div><div class="line number11 index10 alt2"><code class="plain plain"># Now black-out the area of logo in ROI</code></div><div class="line number12 index11 alt1"><code class="plain plain">img1_bg = cv2.bitwise_and(roi,roi,mask = mask_inv)</code></div><div class="line number13 index12 alt2"><code class="plain plain"># Take only region of logo from logo image.</code></div><div class="line number14 index13 alt1"><code class="plain plain">img2_fg = cv2.bitwise_and(img2,img2,mask = mask)</code></div><div class="line number15 index14 alt2"><code class="plain plain"># Put logo in ROI and modify the main image</code></div><div class="line number16 index15 alt1"><code class="plain plain">dst = cv2.add(img1_bg,img2_fg)</code></div><div class="line number17 index16 alt2"><code class="plain plain">img1[0:rows, 0:cols ] = dst</code></div><div class="line number18 index17 alt1"><code class="plain plain">cv2.imshow('res',img1)</code></div><div class="line number19 index18 alt2"><code class="plain plain">cv2.waitKey(0)</code></div><div class="line number20 index19 alt1"><code class="plain plain">cv2.destroyAllWindows()</code></div></div></td></tr></tbody></table></div></div></div><br><br>
+
+                <h1>What is GSM?</h1>
+
+
+                <div style="display:flex">
+                    <div style="margin-right: 80px;transform:translate(0px, 60px);">
+                        <p>GSM is a standard developed by the European Telecommunications Standards Institute.It was
+                            created to describe
+                            the protocols for second generation(2G) digital cellular networks used by mobile phones and
+                            is now the default
+                            global standard for mobile communications.A GSM module is a chip or a circuit that will
+                            establish
+                            communication between a mobile device and a GSM system.<br><br>
+
+                            Its functions include:</p>
+                        <ul>
+                            <li>Read,write and delete SMS messages</li>
+                            <li>Send SMS messages</li>
+                            <li>Monitor signal strength
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="/blog-pics/coding/v-motion/847a6-91pzyknywql._sx385_.jpg"
+                            style="margin-top: 40px;border-radius: 6px;margin-bottom: 40px; width: 300px">
+                    </div>
+                </div>
+
+
+                <br />
+                <!-- ---------------------- This is optional ---------------------- -->
+
+                <br />
+                <br />
+
+                <h1>Demo of the project:</h1>
+                <br><br>
+                <center>
+                    <iframe width="600" height="450" src = "https://www.youtube.com/embed/boVolnzBtbw">
+                    </iframe>
+                </center>
+
+                <!-- ------------------------------------------------------------ -->
+            </article>
+        </div>
+        <span class="divider">
+            <span class="divider-bar"></span>
+        </span>
+
+        <!-- ----------------------aside------------------------ -->
+        <aside class="landing-sidebar">
+            <section class="blogcontainer">
+              <h2>Check out our other posts</h2>
+              <br />
+              <!-- background images are added using css nth child -->
+              <main class="page-content">
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">FACE RECOGNITION Door Lock</h2>
+                    <p class="copy">
+                      Are you fed up of losing your room keys? Or are you fed up of remembering which key opens which lock? To solve these problems, we present...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">LDR Dot Matrix</h2>
+                    <p class="copy">
+                      In the modern world which is full of advertisement what is better than to provide the world with a cheaper and efficient way of advertisement. What is more impressive...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">You Can't Beat A Healthy Heart</h2>
+                    <p class="copy">
+                      PARTS OF HEART WAVE : Electrocardiography (ECG or EKG) is the method of recording the electrical activity of heart over a period of...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">NIGAHEIN</h2>
+                    <p class="copy">
+                      A Pupil tracking based room automation system
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">PHONE DETECTOR</h2>
+                    <p class="copy">
+                      March 24,2019. Current working model About: The basic principle behind the cell phone detector circuit is to detect the RF signals. Illegal use of cell phones in places like exam halls, confidential rooms, petrol bunks...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">SMART FARM- ELECTRONICS CLUB, IIT GUWAHATI</h2>
+                    <p class="copy">Just think, life of a hardworking farmer can be made lot more easier and comfortable if he could control his whole farm sitting at his home. So we have come...</p>
+                    <a href="/blog-blogs/sidebar/uncat-smartfarm.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">WiFi Jammer – Electronics Club IITG</h2>
+                    <p class="copy">NODE MCU What are Jammers? A jammer is a device which can prevent the use of a particular radio frequency by bombarding it with random noise, or in other words, jamming it...</p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">ELECTRONIC PIANO – Electronics Club IITG</h2>
+                    <p class="copy">Have you ever experienced that when you are in off-mood, someone plays music around you and your mind gets refreshed ? And had a thought to play your own tunes whenever you...</p>
+                    <a href="/blog-blogs/sidebar/uncat-piano.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">V-Motion</h2>
+                    <p class="copy">
+                      "Virtual music player which plays music according to the movements of hands.It is similar to playing a tune on a keyboard or a guitar where you need to strike different chords.To ease...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">Laser communication System – Electronics Club IITG</h2>
+                    <p class="copy">
+                      From where I sit, the future looks very bright for laser communicationsBadri Younes, NASA's deputy associate administrator ...
+                    </p>
+                    <a href="/blog-blogs/sidebar/uncat-laser.html">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="content">
+                    <h2 class="title">RTL-SDR application (Weather satellite data)-Electronics Club IITG</h2>
+                    <p class="copy">
+                      What is RTL-SDR? Ever wondered how Wi-Fi, Bluetooth, GSM(Mobile communication & Internet), GPS, Radio, DTH, Satellites work. Well they do so by the usage of electromagnetic...
+                    </p>
+                    <a href="/blog-blogs/sidebar/">
+                      <button class="btn">View</button>
+                    </a>
+                  </div>
+                </div>
+        
+        
+              </main>
+            </section>
+        </aside>
+    </section>
+
+    <!-- ----------------------------footer---------------------------------- -->
+    <section class="footer" data-aos="fade-up" data-aos-duration="500">
+        <div class="findus"><h2>Find Us</h2></div>
+        <!-- ---------------------social icons start--------------------- -->
+  
+        <div class="foot-socials-container">
+          <div class="facebook footlogo">
+            <a href="https://www.facebook.com/electronics.iitg" target="_blank">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="facebook-f"
+                class="svg-inline--fa fa-facebook-f fa-w-10"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 320 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="youtubelogo footlogo">
+            <a
+              href="https://www.youtube.com/channel/UClPWjFXGdtjKYjZvulnUViw"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="youtube"
+                class="svg-inline--fa fa-youtube fa-w-18"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+  
+          <div class="instagram footlogo">
+            <a
+              href="https://www.instagram.com/electronicsclubiitg/"
+              target="_blank"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fab"
+                data-icon="instagram"
+                class="svg-inline--fa fa-instagram fa-w-14"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- /* ------------------------------------form start------------------------------- */ -->
+        <form
+          id="contact-form"
+          method="post"
+          action="form-handler.php"
+          target="_blank"
+        >
+          <div>
+            <h3>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="far"
+                data-icon="envelope"
+                class="svg-inline--fa fa-envelope fa-w-16"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="#ddd"
+                  d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"
+                ></path>
+              </svg>
+              Contact Us
+            </h3>
+            <br />
+            <p>
+              For any doubts/queries, feel free to contact us at
+              <span>
+                <a
+                  href="mailto:electronicsclub@iitg.ac.in"
+                  style="text-decoration: none; color: #f15925"
+                >
+                  electronicsclub@iitg.ac.in</a
+                >
+              </span>
+              OR drop a message below:
+            </p>
+          </div>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="Name (required)"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email Address (required)"
+            required
+          />
+  
+          <textarea
+            name="message"
+            class="form-control"
+            placeholder="Message (required)"
+            required
+          ></textarea>
+          <button type="submit" class="form-control-submit" value="Submit">
+            Submit
+          </button>
+        </form>
+  
+        <!-- -----------------------------------footer-footer------------------ -->
+        <div class="footer-footer">
+          <div class="techboard">
+            <a
+              href="https://iitg.ac.in/stud/gymkhana/technical/index.html"
+              target="_blank"
+            >
+              <img src="/techincal board.svg" alt="Technical Board,IITG" />
+            </a>
+          </div>
+          <div class="Rahul">Developed by Rahul Agrawal</div>
+          <div class="Kritika">Designed by Kritika Gupta</div>
+          <!-- techboard and made by and therecontacts mostly iitgwebmail id -->
+        </div>
+      </section>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            // duration: 1000,
+            // delay: 3,
+            // offset: 200,
+            // mirror: true
+        });
+    </script>
+</body>
+
+</html>

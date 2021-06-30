@@ -319,14 +319,16 @@ landmarks = predictor(gray, rect) #on the grayscale image in the rectangle bound
                 </ul><br><br>
 
                 <div class="wp-block-syntaxhighlighter-code ">
-                    <!-- <pre class="brush: python; title: ; notranslate" title=""> -->
+                  <!-- <pre class="brush: python; title: ; notranslate" title=""> -->
+                  <pre class="brush: python;">
 #ArUco marker detection
 #Set up the dictionary for Aruco marker
 aruco_dict = aruco.Dictionary_get(aruco.DICT_6X6_250)
 #Get the params for the dictionary
 params = aruco.DetectorParameters_create()
 #Get the corners and IDs
-corners, ids, rejected = aruco.detectMarkers(gray, aruco_dict,parameters = params) #take the grayscaled imaguser_cam as input
+corners, ids, rejected = aruco.detectMarkers(gray, aruco_dict,parameters = params) 
+#take the grayscaled imaguser_cam as input
 #Draw the marker for visualization
 detected = aruco.drawDetectedMarkers(frame, corners) #frame is the RGB input from the user_cam
 #If at least one marker is detected
@@ -336,10 +338,11 @@ marker_x = int((corners[0][0][0][0] + corners[0][0][2][0])/2)
 marker_y = int((corners[0][0][0][1] + corners[0][0][2][1])/2)
 cv2.circle(detected, (marker_x, marker_y), 5, (255,0,0), -1)
 #Convert to polar and find its sector
-marker_coor = (marker_x - int(control_shape[1]/2), marker_y - int(control_shape[0]/2)) #control_shape is the oveshape of the user_caminput
+marker_coor = (marker_x - int(control_shape[1]/2), marker_y - int(control_shape[0]/2))
+ #control_shape is the oveshape of the user_caminput
 marker_polar = conv2polar(marker_coor)
 marker_sector = sector(marker_polar[1])
-                <!-- </pre> -->
+                </pre>
             </div>
             
             <br><br>
