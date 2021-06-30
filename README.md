@@ -1,4 +1,3 @@
-# Electronics_Club_website
+# Electronics-Club-Website-IITG
 electronics club website
 check it out
-https://rahulagrawal885.github.io/Electronics_Club_website/
