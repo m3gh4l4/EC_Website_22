@@ -1627,7 +1627,7 @@ form > button[type="submit"]:hover {
 .footer-footer {
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
   width: 100%;
   /* justify-content: start; */
   text-align: center;
@@ -1642,7 +1642,8 @@ form > button[type="submit"]:hover {
   width: 15rem;
 }
 .Rahul,
-.Kritika {
+.Kritika,
+.Chetan {
   color: #ddd;
 }
 .Rahul {
@@ -1657,6 +1658,16 @@ form > button[type="submit"]:hover {
 .Kritika {
   justify-self: center;
   margin-right: 2rem;
+}
+.Kritika::after {
+  margin-left: 3rem;
+  content: "";
+  border-right: 1px solid whitesmoke;
+}
+.Chetan {
+  justify-self: center;
+  margin-right: 2rem;
+  
 }
 
 /* -------------------makinf footer responsive--------------------- */
