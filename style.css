@@ -12,7 +12,7 @@ html,
 body {
   height: 100%;
 }
-body:: -wekbit-scrollbar{
+body:: -webkit-scrollbar{
   display:none;
 }
 @font-face {
