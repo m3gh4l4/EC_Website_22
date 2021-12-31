@@ -12,6 +12,9 @@ html,
 body {
   height: 100%;
 }
+body:: -wekbit-scrollbar{
+  display:none;
+}
 @font-face {
   font-family: msjh;
   src: url(./fonts/msjh_0.ttf);
