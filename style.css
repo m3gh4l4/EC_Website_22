@@ -11,8 +11,9 @@
 html,
 body {
   height: 100%;
+  width:100vw;
 }
-body:: -webkit-scrollbar{
+body::-webkit-scrollbar{
   display:none;
 }
 @font-face {
