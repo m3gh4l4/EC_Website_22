@@ -41,7 +41,7 @@ header {
   position: relative;
   top: 1.2rem;
   z-index: 999;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
 }
@@ -121,7 +121,7 @@ nav {
   top: 100%;
   left: 0;
   background: var(--background);
-  width: 100%;
+  width: 100vw;
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 400ms ease-in-out;
